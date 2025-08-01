@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import { MapPin, Phone, Award } from "lucide-react";
+import { Phone, Award } from "lucide-react";
+import { Button } from "../components/ui";
 
 const TransplantCenters = () => {
   return (
@@ -86,12 +86,12 @@ const TransplantCenters = () => {
             Our team can help you find the right transplant center for your
             specific needs.
           </p>
-          <Link
-            to="/contact-us"
+          <Button
+            href="/contact-us"
             className="bg-primary text-white px-8 py-3 rounded-full font-semibold hover:bg-primary/90 transition-colors"
           >
             Get Guidance
-          </Link>
+          </Button>
         </div>
       </section>
     </div>

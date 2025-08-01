@@ -7,6 +7,49 @@ export default {
     theme: {
         extend: {
             colors: {
+                // Forest color palette based on natural, earthy tones
+                forest: {
+                    50: '#f7faf7',
+                    100: '#eef5ee',
+                    200: '#dde8dd',
+                    300: '#c2d4c2',
+                    400: '#9bb79b',
+                    500: '#6b8f6b',
+                    600: '#4a6f4a',
+                    700: '#3a573a',
+                    800: '#2f462f',
+                    900: '#283a28',
+                    950: '#1a251a',
+                },
+                // Earth tones for accents
+                earth: {
+                    50: '#fdfbf7',
+                    100: '#faf6ed',
+                    200: '#f3ead4',
+                    300: '#e9d8b0',
+                    400: '#dcc285',
+                    500: '#c9a95a',
+                    600: '#b8943d',
+                    700: '#9a7a32',
+                    800: '#7c612e',
+                    900: '#665029',
+                    950: '#382a15',
+                },
+                // Sage green for secondary elements
+                sage: {
+                    50: '#f6f8f6',
+                    100: '#eef3ee',
+                    200: '#dde7dd',
+                    300: '#c4d3c4',
+                    400: '#a3b7a3',
+                    500: '#7a947a',
+                    600: '#5d755d',
+                    700: '#4a5e4a',
+                    800: '#3e4d3e',
+                    900: '#354035',
+                    950: '#1c231c',
+                },
+                // Keep some of the original colors for compatibility
                 primary: {
                     50: '#fff7ed',
                     100: '#ffedd5',

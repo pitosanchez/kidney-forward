@@ -32,12 +32,12 @@ const Button = ({
 
   const variants = {
     primary:
-      "bg-primary-500 text-white hover:bg-primary-600 focus:ring-primary-500 shadow-lg hover:shadow-xl",
+      "bg-forest-600 text-white hover:bg-forest-700 focus:ring-forest-500 shadow-lg hover:shadow-xl",
     secondary:
-      "bg-secondary-500 text-white hover:bg-secondary-600 focus:ring-secondary-500 shadow-lg hover:shadow-xl",
+      "bg-sage-600 text-white hover:bg-sage-700 focus:ring-sage-500 shadow-lg hover:shadow-xl",
     outline:
-      "border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white focus:ring-primary-500",
-    ghost: "text-primary-500 hover:bg-primary-50 focus:ring-primary-500",
+      "border-2 border-forest-600 text-forest-600 hover:bg-forest-600 hover:text-white focus:ring-forest-500",
+    ghost: "text-forest-600 hover:bg-forest-50 focus:ring-forest-500",
   };
 
   const sizes = {

@@ -66,7 +66,7 @@ const Footer = () => {
                     <a
                       key={social.name}
                       href={social.href}
-                      className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary-500 transition-colors duration-200"
+                      className="w-10 h-10 bg-forest-800 rounded-full flex items-center justify-center hover:bg-forest-600 transition-colors duration-200"
                       aria-label={social.name}
                     >
                       <social.icon className="w-5 h-5" />
@@ -84,7 +84,7 @@ const Footer = () => {
                   <li key={link.name}>
                     <Link
                       to={link.href}
-                      className="text-gray-300 hover:text-primary-400 transition-colors duration-200"
+                      className="text-gray-300 hover:text-forest-400 transition-colors duration-200"
                     >
                       {link.name}
                     </Link>
@@ -101,7 +101,7 @@ const Footer = () => {
                   <li key={link.name}>
                     <Link
                       to={link.href}
-                      className="text-gray-300 hover:text-primary-400 transition-colors duration-200"
+                      className="text-gray-300 hover:text-forest-400 transition-colors duration-200"
                     >
                       {link.name}
                     </Link>
@@ -118,7 +118,7 @@ const Footer = () => {
                   <li key={link.name}>
                     <Link
                       to={link.href}
-                      className="text-gray-300 hover:text-primary-400 transition-colors duration-200"
+                      className="text-gray-300 hover:text-forest-400 transition-colors duration-200"
                     >
                       {link.name}
                     </Link>
@@ -129,15 +129,15 @@ const Footer = () => {
               {/* Contact Info */}
               <div className="space-y-3">
                 <div className="flex items-center space-x-3">
-                  <Mail className="w-5 h-5 text-primary-400" />
+                  <Mail className="w-5 h-5 text-forest-400" />
                   <span className="text-gray-300">info@kidneyforward.org</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <Phone className="w-5 h-5 text-primary-400" />
+                  <Phone className="w-5 h-5 text-forest-400" />
                   <span className="text-gray-300">(555) 123-4567</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <MapPin className="w-5 h-5 text-primary-400" />
+                  <MapPin className="w-5 h-5 text-forest-400" />
                   <span className="text-gray-300">
                     123 Main St, City, State
                   </span>
@@ -161,7 +161,7 @@ const Footer = () => {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-full border border-gray-600 bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                className="flex-1 px-4 py-3 rounded-full border border-gray-600 bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-forest-500 focus:border-transparent"
               />
               <Button variant="primary" size="md" className="whitespace-nowrap">
                 Subscribe
@@ -179,24 +179,24 @@ const Footer = () => {
               <span>
                 &copy; {currentYear} Kidney Forward. All rights reserved.
               </span>
-              <Heart className="w-4 h-4 text-primary-400" />
+              <Heart className="w-4 h-4 text-forest-400" />
             </div>
             <div className="flex space-x-6 text-sm">
               <Link
                 to="/privacy"
-                className="text-gray-400 hover:text-primary-400 transition-colors duration-200"
+                className="text-gray-400 hover:text-forest-400 transition-colors duration-200"
               >
                 Privacy Policy
               </Link>
               <Link
                 to="/terms"
-                className="text-gray-400 hover:text-primary-400 transition-colors duration-200"
+                className="text-gray-400 hover:text-forest-400 transition-colors duration-200"
               >
                 Terms of Service
               </Link>
               <Link
                 to="/accessibility"
-                className="text-gray-400 hover:text-primary-400 transition-colors duration-200"
+                className="text-gray-400 hover:text-forest-400 transition-colors duration-200"
               >
                 Accessibility
               </Link>
