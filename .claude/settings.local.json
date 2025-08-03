@@ -14,7 +14,10 @@
       "Bash(pkill:*)",
       "Bash(ls:*)",
       "Bash(npm run lint)",
-      "Bash(npm run type-check:*)"
+      "Bash(npm run type-check:*)",
+      "Bash(cp:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ],
     "deny": []
   }

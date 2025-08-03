@@ -8,7 +8,7 @@ export default defineConfig({
   base,
   build: {
     rollupOptions: {
-      input: "./public/index.html",
+      input: "./index.html",
     },
   },
 });
