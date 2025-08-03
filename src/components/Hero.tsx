@@ -1,13 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "./ui/Button";
 
 const Hero: React.FC = () => {
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
-
-  const handleVideoClick = () => {
-    setIsVideoPlaying(true);
-  };
-
   return (
     <section
       className="relative min-h-screen bg-cover bg-center bg-no-repeat"
