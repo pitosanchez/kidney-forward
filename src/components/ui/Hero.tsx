@@ -1,58 +1,94 @@
 import { ReactNode } from "react";
-import Container from "./Container";
 
 interface HeroProps {
-  title: string;
-  subtitle?: string;
-  children?: ReactNode;
-  variant?: "primary" | "secondary" | "accent";
-  className?: string;
+  title: ReactNode;
+  subtitle?: ReactNode;
+  description?: ReactNode;
   image?: string;
-  imageAlt?: string;
+  backgroundImage?: string;
+  backgroundVariant?: "gradient" | "image" | "solid";
+  className?: string;
+  children?: ReactNode;
+  overlay?: boolean;
+  overlayOpacity?: number;
 }
 
 const Hero = ({
   title,
   subtitle,
-  children,
-  variant = "primary",
-  className = "",
+  description,
   image,
-  imageAlt,
+  backgroundImage,
+  backgroundVariant = "gradient",
+  className = "",
+  children,
+  overlay = true,
+  overlayOpacity = 0.5,
 }: HeroProps) => {
-  const variants = {
-    primary: "bg-gradient-to-r from-secondary-600 to-primary-500",
-    secondary: "bg-gradient-to-r from-primary-500 to-secondary-600",
-    accent: "bg-gradient-to-r from-accent-600 to-primary-500",
+  const getBackgroundClasses = () => {
+    switch (backgroundVariant) {
+      case "image":
+        return backgroundImage
+          ? `bg-cover bg-center bg-no-repeat`
+          : "bg-gradient-to-br from-forest-600 to-sage-600";
+      case "solid":
+        return "bg-forest-600";
+      default:
+        return "bg-gradient-to-br from-forest-600 via-sage-600 to-accent-600";
+    }
   };
 
-  const baseClasses = "text-white py-20 lg:py-32";
-  const classes = `${baseClasses} ${variants[variant]} ${className}`;
+  const backgroundStyle = backgroundImage
+    ? { backgroundImage: `url(${backgroundImage})` }
+    : {};
 
   return (
-    <section className={classes}>
-      <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="animate-fade-in">
-            <h1 className="text-4xl lg:text-6xl font-bold mb-6 font-heading">
+    <section
+      className={`relative min-h-screen flex items-center justify-center ${getBackgroundClasses()} ${className}`}
+      style={backgroundStyle}
+    >
+      {overlay && (
+        <div
+          className="absolute inset-0 bg-black"
+          style={{ opacity: overlayOpacity }}
+        ></div>
+      )}
+
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          {/* Content */}
+          <div className="text-center lg:text-left">
+            {subtitle && (
+              <div className="text-forest-200 text-sm sm:text-base font-semibold uppercase tracking-wide mb-4">
+                {subtitle}
+              </div>
+            )}
+
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
               {title}
             </h1>
-            {subtitle && (
-              <p className="text-xl mb-8 text-gray-100 max-w-2xl">{subtitle}</p>
+
+            {description && (
+              <p className="text-lg sm:text-xl md:text-2xl text-forest-100 mb-8 max-w-3xl mx-auto lg:mx-0 leading-relaxed">
+                {description}
+              </p>
             )}
+
             {children}
           </div>
+
+          {/* Image */}
           {image && (
-            <div className="flex justify-center animate-slide-up">
+            <div className="hidden lg:block">
               <img
                 src={image}
-                alt={imageAlt || title}
-                className="rounded-2xl shadow-2xl max-w-md w-full h-auto object-cover"
+                alt="Hero"
+                className="w-full h-auto max-w-lg mx-auto rounded-2xl shadow-2xl"
               />
             </div>
           )}
         </div>
-      </Container>
+      </div>
     </section>
   );
 };

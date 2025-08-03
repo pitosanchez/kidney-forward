@@ -3,38 +3,40 @@ import { LucideIcon } from "lucide-react";
 
 interface CardProps {
   children: ReactNode;
-  variant?: "default" | "elevated" | "outlined";
   className?: string;
   icon?: LucideIcon;
-  iconColor?: string;
-  iconBgColor?: string;
+  iconClassName?: string;
+  hover?: boolean;
+  padding?: "none" | "sm" | "md" | "lg" | "xl";
 }
 
 const Card = ({
   children,
-  variant = "default",
   className = "",
   icon: Icon,
-  iconColor = "text-primary-500",
-  iconBgColor = "bg-primary-50",
+  iconClassName = "",
+  hover = true,
+  padding = "md",
 }: CardProps) => {
-  const baseClasses = "rounded-xl transition-all duration-200";
-
-  const variants = {
-    default: "bg-white shadow-md hover:shadow-lg",
-    elevated: "bg-white shadow-xl hover:shadow-2xl",
-    outlined: "bg-white border-2 border-gray-200 hover:border-primary-300",
+  const paddingClasses = {
+    none: "",
+    sm: "p-4 sm:p-6",
+    md: "p-6 sm:p-8",
+    lg: "p-8 sm:p-10",
+    xl: "p-10 sm:p-12",
   };
 
-  const classes = `${baseClasses} ${variants[variant]} ${className}`;
+  const hoverClass = hover
+    ? "hover:shadow-xl hover:scale-105 transition-all duration-300"
+    : "";
 
   return (
-    <div className={classes}>
+    <div
+      className={`bg-white rounded-2xl shadow-lg border border-gray-100 ${paddingClasses[padding]} ${hoverClass} ${className}`}
+    >
       {Icon && (
-        <div
-          className={`${iconBgColor} w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4`}
-        >
-          <Icon className={`w-8 h-8 ${iconColor}`} />
+        <div className={`mb-4 sm:mb-6 ${iconClassName}`}>
+          <Icon className="w-8 h-8 sm:w-10 sm:h-10 text-forest-600" />
         </div>
       )}
       {children}

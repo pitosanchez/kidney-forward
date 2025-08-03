@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Button from "./ui/Button";
 import { useHeader } from "../contexts/HeaderContext";
 
@@ -8,27 +8,13 @@ import { useHeader } from "../contexts/HeaderContext";
 interface NavigationItem {
   name: string;
   href: string;
-  hasDropdown?: boolean;
-  dropdownItems?: Array<{
-    name: string;
-    href: string;
-  }>;
 }
 
 interface HeaderProps {}
 
 // Constants
 const NAVIGATION_ITEMS: NavigationItem[] = [
-  {
-    name: "ABOUT US",
-    href: "/about",
-    hasDropdown: true,
-    dropdownItems: [
-      { name: "Our Mission", href: "/about/mission" },
-      { name: "Our Team", href: "/about/team" },
-      { name: "Our Story", href: "/about/story" },
-    ],
-  },
+  { name: "ABOUT", href: "/about" },
   { name: "DONORS", href: "/donors" },
   { name: "PATIENTS", href: "/patients" },
   { name: "GET INVOLVED", href: "/get-involved" },
@@ -50,99 +36,55 @@ const ACTION_BUTTONS = [
 
 // Components
 const Logo: React.FC = () => (
-  <Link to="/" className="flex items-center">
+  <Link to="/" className="flex items-center justify-center lg:ml-16">
     <img
       src="/images/logowhitesmaller.png"
       alt="Kidney Forward Logo"
-      className="h-10 md:h-12"
+      className="h-8 sm:h-10 md:h-12 object-contain"
     />
   </Link>
 );
 
 const NavigationLink: React.FC<{
   item: NavigationItem;
-  onDropdownToggle: (isOpen: boolean) => void;
-}> = ({ item, onDropdownToggle }) => {
-  if (item.hasDropdown) {
-    return (
-      <div
-        className="flex items-center space-x-1 cursor-pointer text-white hover:text-gray-200 transition-colors duration-200 whitespace-nowrap"
-        onMouseEnter={() => onDropdownToggle(true)}
-        onMouseLeave={() => onDropdownToggle(false)}
-      >
-        <span className="text-sm font-semibold tracking-wide">{item.name}</span>
-        <ChevronDown className="w-4 h-4 transition-transform duration-200" />
-      </div>
-    );
-  }
-
+}> = ({ item }) => {
   return (
     <Link
       to={item.href}
-      className="text-sm font-semibold text-white hover:text-gray-200 transition-colors duration-200 tracking-wide whitespace-nowrap"
+      className="text-xs sm:text-sm font-semibold text-white hover:text-teal-200 transition-colors duration-200 tracking-wide whitespace-nowrap"
     >
       {item.name}
     </Link>
   );
 };
 
-const DropdownMenu: React.FC<{
-  items: Array<{ name: string; href: string }>;
-  isOpen: boolean;
-}> = ({ items, isOpen }) => {
-  if (!isOpen) return null;
-
-  return (
-    <div className="absolute top-full left-0 mt-4 w-48 bg-white rounded-lg shadow-xl border border-gray-200 z-50">
-      {items.map((dropdownItem) => (
-        <Link
-          key={dropdownItem.name}
-          to={dropdownItem.href}
-          className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors duration-200"
-        >
-          {dropdownItem.name}
-        </Link>
-      ))}
-    </div>
-  );
-};
-
 const DesktopNavigation: React.FC<{
   items: NavigationItem[];
-  isAboutDropdownOpen: boolean;
-  onAboutDropdownToggle: (isOpen: boolean) => void;
-}> = ({ items, isAboutDropdownOpen, onAboutDropdownToggle }) => (
-  <nav className="hidden lg:flex items-center justify-center flex-1 px-8">
-    <div className="flex items-center space-x-8">
-      {items.map((item) => (
-        <div key={item.name} className="relative">
-          <NavigationLink
-            item={item}
-            onDropdownToggle={onAboutDropdownToggle}
-          />
-          {item.hasDropdown && item.dropdownItems && (
-            <DropdownMenu
-              items={item.dropdownItems}
-              isOpen={isAboutDropdownOpen}
-            />
-          )}
-        </div>
-      ))}
-    </div>
-  </nav>
-);
+}> = ({ items }) => {
+  return (
+    <nav className="hidden lg:flex items-center justify-center flex-1 px-4 sm:px-8">
+      <div className="flex items-center justify-center space-x-4 sm:space-x-6 lg:space-x-8">
+        {items.map((item) => (
+          <div key={item.name} className="relative">
+            <NavigationLink item={item} />
+          </div>
+        ))}
+      </div>
+    </nav>
+  );
+};
 
 const ActionButtons: React.FC<{ buttons: typeof ACTION_BUTTONS }> = ({
   buttons,
 }) => (
-  <div className="hidden lg:flex items-center space-x-4">
+  <div className="hidden lg:flex items-center justify-end space-x-2 sm:space-x-4">
     {buttons.map((button) => (
       <Button
         key={button.text}
         href={button.href}
         variant="primary"
         size="sm"
-        className={`${button.className} text-white font-semibold px-6 py-2 rounded-full`}
+        className={`${button.className} text-white font-semibold px-3 sm:px-6 py-2 rounded-full text-xs sm:text-sm`}
       >
         {button.text}
       </Button>
@@ -157,9 +99,14 @@ const MobileMenuButton: React.FC<{
   <div className="lg:hidden">
     <button
       onClick={onToggle}
-      className="text-white hover:text-gray-200 transition-colors duration-200 p-2"
+      className="text-white hover:text-teal-200 transition-colors duration-200 p-2"
+      aria-label={isOpen ? "Close menu" : "Open menu"}
     >
-      {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+      {isOpen ? (
+        <X className="w-5 h-5 sm:w-6 sm:h-6" />
+      ) : (
+        <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
+      )}
     </button>
   </div>
 );
@@ -173,13 +120,13 @@ const MobileNavigation: React.FC<{
   if (!isOpen) return null;
 
   return (
-    <div className="lg:hidden">
-      <div className="px-4 pt-4 pb-6 space-y-3 bg-white/95 backdrop-blur-sm rounded-lg mt-4 shadow-xl">
+    <div className="lg:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-md shadow-xl border-t border-gray-200">
+      <div className="px-4 pt-4 pb-6 space-y-2 sm:space-y-3">
         {items.map((item) => (
           <Link
             key={item.name}
             to={item.href}
-            className="block px-4 py-3 text-base font-semibold text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors duration-200"
+            className="block px-4 py-3 text-base sm:text-lg font-semibold text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors duration-200 cursor-pointer"
             onClick={onClose}
           >
             {item.name}
@@ -192,7 +139,8 @@ const MobileNavigation: React.FC<{
               href={button.href}
               variant="primary"
               size="sm"
-              className={`w-full ${button.className} text-white font-semibold rounded-full`}
+              fullWidth
+              className={`${button.className} text-white font-semibold rounded-full`}
             >
               {button.text}
             </Button>
@@ -206,12 +154,7 @@ const MobileNavigation: React.FC<{
 // Main Component
 const Header: React.FC<HeaderProps> = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
   const { isTransparent } = useHeader();
-
-  const handleAboutDropdownToggle = (isOpen: boolean) => {
-    setIsAboutDropdownOpen(isOpen);
-  };
 
   const handleMobileMenuToggle = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -223,24 +166,28 @@ const Header: React.FC<HeaderProps> = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${isTransparent ? "bg-transparent" : "bg-slate-800"}`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isTransparent
+          ? "bg-teal-900/80 backdrop-blur-md border-b border-teal-200/30"
+          : "bg-teal-900/95 backdrop-blur-md border-b border-teal-200/50"
+      }`}
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          <Logo />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16 sm:h-20">
+          <div className="flex items-center">
+            <Logo />
+          </div>
 
-          <DesktopNavigation
-            items={NAVIGATION_ITEMS}
-            isAboutDropdownOpen={isAboutDropdownOpen}
-            onAboutDropdownToggle={handleAboutDropdownToggle}
-          />
+          <DesktopNavigation items={NAVIGATION_ITEMS} />
 
-          <ActionButtons buttons={ACTION_BUTTONS} />
+          <div className="flex items-center space-x-2 sm:space-x-4">
+            <ActionButtons buttons={ACTION_BUTTONS} />
 
-          <MobileMenuButton
-            isOpen={isMenuOpen}
-            onToggle={handleMobileMenuToggle}
-          />
+            <MobileMenuButton
+              isOpen={isMenuOpen}
+              onToggle={handleMobileMenuToggle}
+            />
+          </div>
         </div>
 
         <MobileNavigation

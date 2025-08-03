@@ -1,90 +1,76 @@
 import { Link } from "react-router-dom";
-import {
-  Facebook,
-  Twitter,
-  Instagram,
-  Linkedin,
-  Mail,
-  Phone,
-  MapPin,
-  Heart,
-} from "lucide-react";
+import { Facebook, Instagram, Linkedin } from "lucide-react";
 import { Button, Container } from "./ui";
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
+  const quickLinks = [
+    { name: "Home", href: "/" },
+    { name: "About Us", href: "/about" },
+    { name: "Contact Us", href: "/contact" },
+    { name: "Privacy Policy and Terms and Conditions", href: "/privacy" },
+  ];
 
-  const footerLinks = {
-    about: [
-      { name: "About Us", href: "/about-us" },
-      { name: "Our Mission", href: "/about-us" },
-      { name: "Leadership", href: "/about-us" },
-      { name: "Contact Us", href: "/contact-us" },
-    ],
-    services: [
-      { name: "Donor Registry", href: "/donor-registry" },
-      { name: "Patient Support", href: "/patients" },
-      { name: "Education", href: "/courses" },
-      { name: "Get Involved", href: "/get-involved" },
-    ],
-    resources: [
-      { name: "Donor Information", href: "/donors" },
-      { name: "Patient Resources", href: "/patients" },
-      { name: "Transplant Centers", href: "/transplant-centers" },
-      { name: "Corporate Partners", href: "/corporate-partners" },
-    ],
-  };
+  const programs = [
+    { name: "Bobby Lynn Navigator Program", href: "/programs" },
+    { name: "Guided Living Donor Program", href: "/programs" },
+    { name: "Jentosy Patient Support Program", href: "/programs" },
+  ];
 
   const socialLinks = [
-    { name: "Facebook", icon: Facebook, href: "#" },
-    { name: "Twitter", icon: Twitter, href: "#" },
     { name: "Instagram", icon: Instagram, href: "#" },
+    { name: "Facebook", icon: Facebook, href: "#" },
     { name: "LinkedIn", icon: Linkedin, href: "#" },
   ];
 
   return (
     <footer className="bg-gray-900 text-white">
-      {/* Main Footer Content */}
-      <div className="py-16">
-        <Container>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Organization Info */}
+      <Container>
+        <div className="py-12 sm:py-16">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+            {/* Left Column - Subscription Section */}
             <div className="lg:col-span-1">
+              {/* Logo */}
               <div className="mb-6">
-                <img
-                  src="/images/logo.png"
-                  alt="Kidney Forward"
-                  className="h-12 mb-4"
-                />
-                <p className="text-gray-300 leading-relaxed mb-6">
-                  Connecting kidney donors with patients in need, making a
-                  difference one kidney at a time through education, support,
-                  and advocacy.
-                </p>
-                <div className="flex space-x-4">
-                  {socialLinks.map((social) => (
-                    <a
-                      key={social.name}
-                      href={social.href}
-                      className="w-10 h-10 bg-forest-800 rounded-full flex items-center justify-center hover:bg-forest-600 transition-colors duration-200"
-                      aria-label={social.name}
-                    >
-                      <social.icon className="w-5 h-5" />
-                    </a>
-                  ))}
+                <div className="text-xl sm:text-2xl font-bold">
+                  <span className="text-white">Kidney </span>
+                  <span className="text-green-400">88</span>
+                  <span className="text-white"> FORWARD</span>
+                </div>
+              </div>
+
+              {/* Subscribe Section */}
+              <div>
+                <h3 className="text-lg sm:text-xl font-bold mb-4">
+                  Subscribe for News & Updates
+                </h3>
+                <div className="space-y-4">
+                  <input
+                    type="email"
+                    placeholder="Your email address"
+                    className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base"
+                  />
+                  <Button
+                    variant="primary"
+                    size="md"
+                    className="w-full bg-gray-300 text-black font-bold hover:bg-gray-200"
+                  >
+                    SUBSCRIBE
+                  </Button>
                 </div>
               </div>
             </div>
 
-            {/* About Links */}
-            <div>
-              <h3 className="text-lg font-semibold mb-6">About</h3>
-              <ul className="space-y-3">
-                {footerLinks.about.map((link) => (
+            {/* Middle Column - Quick Links */}
+            <div className="lg:col-span-1">
+              <h3 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6">
+                Quick Links
+              </h3>
+              <ul className="space-y-2 sm:space-y-3">
+                {quickLinks.map((link) => (
                   <li key={link.name}>
                     <Link
                       to={link.href}
-                      className="text-gray-300 hover:text-forest-400 transition-colors duration-200"
+                      className="text-white hover:text-gray-300 transition-colors duration-200 text-sm sm:text-base"
                     >
                       {link.name}
                     </Link>
@@ -93,117 +79,80 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* Services Links */}
-            <div>
-              <h3 className="text-lg font-semibold mb-6">Services</h3>
-              <ul className="space-y-3">
-                {footerLinks.services.map((link) => (
-                  <li key={link.name}>
+            {/* Right Column - Programs & Call to Action */}
+            <div className="lg:col-span-1">
+              <h3 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6">
+                Programs
+              </h3>
+              <ul className="space-y-2 sm:space-y-3 mb-6 sm:mb-8">
+                {programs.map((program) => (
+                  <li key={program.name}>
                     <Link
-                      to={link.href}
-                      className="text-gray-300 hover:text-forest-400 transition-colors duration-200"
+                      to={program.href}
+                      className="text-white hover:text-gray-300 transition-colors duration-200 text-sm sm:text-base"
                     >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Contact & Resources */}
-            <div>
-              <h3 className="text-lg font-semibold mb-6">Resources</h3>
-              <ul className="space-y-3 mb-8">
-                {footerLinks.resources.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      to={link.href}
-                      className="text-gray-300 hover:text-forest-400 transition-colors duration-200"
-                    >
-                      {link.name}
+                      {program.name}
                     </Link>
                   </li>
                 ))}
               </ul>
 
-              {/* Contact Info */}
-              <div className="space-y-3">
-                <div className="flex items-center space-x-3">
-                  <Mail className="w-5 h-5 text-forest-400" />
-                  <span className="text-gray-300">info@kidneyforward.org</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <Phone className="w-5 h-5 text-forest-400" />
-                  <span className="text-gray-300">(555) 123-4567</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <MapPin className="w-5 h-5 text-forest-400" />
-                  <span className="text-gray-300">
-                    123 Main St, City, State
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Container>
-      </div>
-
-      {/* Newsletter Signup */}
-      <div className="bg-gray-800 py-12">
-        <Container>
-          <div className="text-center">
-            <h3 className="text-2xl font-bold mb-4">Stay Connected</h3>
-            <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-              Subscribe to our newsletter for updates on kidney donation,
-              patient stories, and ways to get involved in our mission.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-full border border-gray-600 bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-forest-500 focus:border-transparent"
-              />
-              <Button variant="primary" size="md" className="whitespace-nowrap">
-                Subscribe
+              {/* Volunteer Button */}
+              <Button
+                href="/volunteer"
+                variant="primary"
+                size="md"
+                className="bg-blue-600 text-white font-bold hover:bg-blue-700 mb-6 sm:mb-8"
+              >
+                VOLUNTEER →
               </Button>
-            </div>
-          </div>
-        </Container>
-      </div>
 
-      {/* Bottom Bar */}
-      <div className="bg-gray-950 py-6">
-        <Container>
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="flex items-center space-x-2 text-gray-400">
-              <span>
-                &copy; {currentYear} Kidney Forward. All rights reserved.
-              </span>
-              <Heart className="w-4 h-4 text-forest-400" />
-            </div>
-            <div className="flex space-x-6 text-sm">
-              <Link
-                to="/privacy"
-                className="text-gray-400 hover:text-forest-400 transition-colors duration-200"
-              >
-                Privacy Policy
-              </Link>
-              <Link
-                to="/terms"
-                className="text-gray-400 hover:text-forest-400 transition-colors duration-200"
-              >
-                Terms of Service
-              </Link>
-              <Link
-                to="/accessibility"
-                className="text-gray-400 hover:text-forest-400 transition-colors duration-200"
-              >
-                Accessibility
-              </Link>
+              {/* Social Media Icons */}
+              <div className="flex space-x-4">
+                {socialLinks.map((social) => (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    className="w-8 h-8 text-white hover:text-gray-300 transition-colors duration-200"
+                    aria-label={social.name}
+                  >
+                    <social.icon className="w-full h-full" />
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
-        </Container>
-      </div>
+
+          {/* Bottom Section - Copyright and Additional Links */}
+          <div className="border-t border-gray-800 mt-8 sm:mt-12 pt-8 sm:pt-12">
+            <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+              <div className="text-sm text-gray-400 text-center sm:text-left">
+                © 2024 Kidney Forward. All rights reserved.
+              </div>
+              <div className="flex flex-wrap justify-center sm:justify-end space-x-6 text-sm text-gray-400">
+                <Link
+                  to="/privacy"
+                  className="hover:text-white transition-colors duration-200"
+                >
+                  Privacy Policy
+                </Link>
+                <Link
+                  to="/terms"
+                  className="hover:text-white transition-colors duration-200"
+                >
+                  Terms of Service
+                </Link>
+                <Link
+                  to="/contact"
+                  className="hover:text-white transition-colors duration-200"
+                >
+                  Contact
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Container>
     </footer>
   );
 };

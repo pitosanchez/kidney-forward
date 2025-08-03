@@ -1,18 +1,20 @@
 import { ReactNode } from "react";
 import { Link } from "react-router-dom";
-import { LucideIcon } from "lucide-react";
+import { LucideIcon, Loader2 } from "lucide-react";
 
 interface ButtonProps {
   children: ReactNode;
   variant?: "primary" | "secondary" | "outline" | "ghost";
-  size?: "sm" | "md" | "lg";
+  size?: "xs" | "sm" | "md" | "lg" | "xl";
   href?: string;
   onClick?: () => void;
   icon?: LucideIcon;
   iconPosition?: "left" | "right";
   className?: string;
   disabled?: boolean;
+  loading?: boolean;
   type?: "button" | "submit" | "reset";
+  fullWidth?: boolean;
 }
 
 const Button = ({
@@ -25,7 +27,9 @@ const Button = ({
   iconPosition = "right",
   className = "",
   disabled = false,
+  loading = false,
   type = "button",
+  fullWidth = false,
 }: ButtonProps) => {
   const baseClasses =
     "inline-flex items-center justify-center font-semibold rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed";
@@ -41,18 +45,35 @@ const Button = ({
   };
 
   const sizes = {
+    xs: "px-3 py-1.5 text-xs",
     sm: "px-4 py-2 text-sm",
     md: "px-6 py-3 text-base",
     lg: "px-8 py-4 text-lg",
+    xl: "px-10 py-5 text-xl",
   };
 
-  const classes = `${baseClasses} ${variants[variant]} ${sizes[size]} ${className}`;
+  const widthClass = fullWidth ? "w-full" : "";
+
+  const classes = `${baseClasses} ${variants[variant]} ${sizes[size]} ${widthClass} ${className}`;
 
   const content = (
     <>
-      {Icon && iconPosition === "left" && <Icon className="w-5 h-5 mr-2" />}
-      {children}
-      {Icon && iconPosition === "right" && <Icon className="w-5 h-5 ml-2" />}
+      {loading ? (
+        <>
+          <Loader2 className="w-4 h-4 sm:w-5 sm:h-5 mr-2 animate-spin" />
+          <span className="hidden sm:inline">Loading...</span>
+        </>
+      ) : (
+        <>
+          {Icon && iconPosition === "left" && (
+            <Icon className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+          )}
+          {children}
+          {Icon && iconPosition === "right" && (
+            <Icon className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
+          )}
+        </>
+      )}
     </>
   );
 
@@ -68,7 +89,7 @@ const Button = ({
     <button
       type={type}
       onClick={onClick}
-      disabled={disabled}
+      disabled={disabled || loading}
       className={classes}
     >
       {content}

@@ -1,56 +1,33 @@
-import React, { useEffect } from "react";
-import { useHeader } from "../contexts/HeaderContext";
-import { Button, Section, Container, Hero } from "../components/ui";
-import TeamCard3D from "../components/TeamCard3D";
+import React from "react";
 
 const About: React.FC = () => {
-  const { setIsTransparent } = useHeader();
-
-  useEffect(() => {
-    setIsTransparent(false);
-    return () => setIsTransparent(false);
-  }, [setIsTransparent]);
-
   return (
     <div>
       {/* Hero Section */}
-      <Hero
-        title=""
-        subtitle=""
-        description=""
-        backgroundImage="/images/happymom.webp"
-        backgroundVariant="image"
-        overlay={false}
-        className="min-h-[60vh] md:min-h-[70vh] lg:min-h-[80vh] flex items-center"
-      >
-        <div className="w-full max-w-7xl mx-auto px-8 md:px-16 lg:px-24">
-          <div className="text-left">
-            <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold text-white mb-6" style={{textShadow: '4px 4px 8px rgba(0,0,0,0.7), 8px 8px 16px rgba(0,0,0,0.5), 12px 12px 24px rgba(0,0,0,0.3)'}}>
-              About Us
-            </h1>
-            <p className="text-xl sm:text-2xl md:text-3xl text-white/90 font-light">
-              Learn more about who we are and why we do what we do.
-            </p>
-          </div>
+      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">About Us</h1>
+          <p className="text-xl md:text-2xl max-w-3xl mx-auto">
+            Learn more about who we are and why we do what we do.
+          </p>
         </div>
-      </Hero>
+      </section>
+
       {/* How Kidney Forward Started Section */}
-      <Section
-        title="How Kidney Forward Started"
-        subtitle=""
-        background="white"
-        padding="md"
-        className=""
-      >
-        <Container>
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="mb-8">
-              <h3 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6 text-center">
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
+              How Kidney Forward Started
+            </h2>
+
+            <div className="mb-12">
+              <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">
                 Our Story
               </h3>
-              <div className="prose prose-xl max-w-none text-gray-700 space-y-6 text-justify mx-auto">
-                <p className="text-xl leading-relaxed">Kidney Forward was started by Andrew Luu in 2024.</p>
-                <p className="text-xl leading-relaxed">
+              <div className="prose prose-lg max-w-none text-gray-700 space-y-6">
+                <p>Kidney Forward was started by Andrew Luu in 2024.</p>
+                <p>
                   At age 13, Andrew received his first kidney transplant from
                   his mother and twenty years later in 2020, his kidney function
                   had deteriorated to 30%. He and his parents always knew that
@@ -66,18 +43,18 @@ const About: React.FC = () => {
                   federal government job into a private sector corporate job so
                   that he would have health insurance.
                 </p>
-                <p className="text-xl leading-relaxed">
+                <p>
                   People familiar with the transplantation process know where
                   this story goes: Andrew's family ultimately backed out and
                   declined to get evaluated to be a living donor.
                 </p>
-                <p className="text-xl leading-relaxed">
+                <p>
                   Andrew was ultimately waitlisted in California, where the
                   average wait time for a deceased donor is eight to ten years.
                   In the United States, eighteen people die a day waiting for a
                   kidney from a deceased donor.
                 </p>
-                <p className="text-xl leading-relaxed">
+                <p>
                   He understands he is not entitled to anyone's organs but it
                   was no less disappointing when his family reneged. Andrew
                   understands living with chronic invisible illness, the pain of
@@ -86,7 +63,7 @@ const About: React.FC = () => {
                   self-centered and oblivious people who take their health for
                   granted.
                 </p>
-                <p className="text-xl leading-relaxed">
+                <p>
                   With 330 million living in the US, Kidney Forward believes
                   there should be no waitlist and has made its mission to
                   eradicate the waitlist by activating living donors at scale.
@@ -95,7 +72,7 @@ const About: React.FC = () => {
                   healthcare costs for the patient, for the families and for
                   taxpayers.
                 </p>
-                <p className="text-xl leading-relaxed">
+                <p>
                   Asking someone to voluntarily give up a vital organ is a big
                   ask but there are enough latent living donors to fulfill the
                   waitlist until kidney technology can take over. Thanks to his
@@ -107,47 +84,83 @@ const About: React.FC = () => {
               </div>
             </div>
 
+            <div className="mb-12">
+              <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">
+                Meet Our Dedicated Team
+              </h3>
+            </div>
           </div>
-        </Container>
-      </Section>
+        </div>
+      </section>
 
       {/* Our Team Section */}
-      <Section 
-        title="Meet Our Leaders" 
-        subtitle="Passionate advocates transforming kidney care" 
-        background="gray" 
-        padding="xl"
-        className="overflow-hidden"
-      >
-        <Container>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 max-w-5xl mx-auto">
-            <TeamCard3D
-              name="Andrew Luu"
-              title="Founder, CEO"
-              image="/images/adrewluu.jpg"
-              href="/andrew-luu"
-              delay={0.2}
-            />
-            <TeamCard3D
-              name="Robert Sanchez"
-              title="Director of the Jentosy Project"
-              image="/images/robertBlueSuit.webp"
-              href="/robert-sanchez"
-              delay={0.4}
-            />
+      <section className="py-16 bg-gray-100">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="mb-12">
+              <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">
+                Meet Our Dedicated Team
+              </h3>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+            {/* Andrew Luu */}
+            <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+              <div className="aspect-square overflow-hidden">
+                <img
+                  src="/images/adrewluu.jpg"
+                  alt="Andrew Luu"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="p-6 sm:p-8">
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
+                  Andrew Luu
+                </h3>
+                <p className="text-blue-600 font-semibold mb-4">Founder, CEO</p>
+                <a
+                  href="/andrew-luu"
+                  className="block w-full text-center bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+                >
+                  Learn More
+                </a>
+              </div>
+            </div>
+
+            {/* Robert Sanchez */}
+            <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+              <div className="aspect-square overflow-hidden">
+                <img
+                  src="/images/robertsanchez.jpg"
+                  alt="Robert Sanchez"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="p-6 sm:p-8">
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
+                  Robert Sanchez
+                </h3>
+                <p className="text-blue-600 font-semibold mb-4">
+                  Director of the Jentosy Project
+                </p>
+                <a
+                  href="/robert-sanchez"
+                  className="block w-full text-center bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+                >
+                  Learn More
+                </a>
+              </div>
+            </div>
           </div>
-        </Container>
-      </Section>
+        </div>
+      </section>
 
       {/* Mission & Vision Section */}
-      <Section
-        title="Our Mission & Vision"
-        subtitle=""
-        background="white"
-        padding="xl"
-      >
-        <Container>
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
+              Our Mission & Vision
+            </h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               {/* Mission */}
               <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8">
@@ -216,18 +229,16 @@ const About: React.FC = () => {
               </div>
             </div>
           </div>
-        </Container>
-      </Section>
+        </div>
+      </section>
 
       {/* Statistics Section */}
-      <Section
-        title="The Impact of Kidney Disease"
-        subtitle=""
-        background="gray"
-        padding="xl"
-      >
-        <Container>
+      <section className="py-16 bg-gray-100">
+        <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
+              The Impact of Kidney Disease
+            </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               <div className="text-center">
                 <div className="text-4xl md:text-5xl font-bold text-blue-600 mb-2">
@@ -263,18 +274,16 @@ const About: React.FC = () => {
               </div>
             </div>
           </div>
-        </Container>
-      </Section>
+        </div>
+      </section>
 
       {/* Programs Section */}
-      <Section
-        title="Our Programs & Services"
-        subtitle=""
-        background="white"
-        padding="xl"
-      >
-        <Container>
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
+              Our Programs & Services
+            </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {/* Living Donor Activation */}
               <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
@@ -301,9 +310,12 @@ const About: React.FC = () => {
                   patients in need, providing comprehensive support throughout
                   the donation process.
                 </p>
-                <Button href="/donors" variant="outline" size="sm">
+                <a
+                  href="/donors"
+                  className="inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+                >
                   Learn More
-                </Button>
+                </a>
               </div>
 
               {/* Patient Support */}
@@ -331,9 +343,12 @@ const About: React.FC = () => {
                   emotional support, and guidance through the transplant
                   process.
                 </p>
-                <Button href="/patients" variant="outline" size="sm">
+                <a
+                  href="/patients"
+                  className="inline-block bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors"
+                >
                   Learn More
-                </Button>
+                </a>
               </div>
 
               {/* Education & Advocacy */}
@@ -360,9 +375,12 @@ const About: React.FC = () => {
                   Raising awareness about kidney disease, living donation, and
                   advocating for policy changes to improve transplant access.
                 </p>
-                <Button href="/get-involved" variant="outline" size="sm">
+                <a
+                  href="/get-involved"
+                  className="inline-block bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 transition-colors"
+                >
                   Learn More
-                </Button>
+                </a>
               </div>
 
               {/* Community Outreach */}
@@ -390,9 +408,12 @@ const About: React.FC = () => {
                   centers, and community organizations to expand our reach and
                   impact.
                 </p>
-                <Button href="/corporate-partners" variant="outline" size="sm">
+                <a
+                  href="/corporate-partners"
+                  className="inline-block bg-orange-600 text-white px-4 py-2 rounded-md hover:bg-orange-700 transition-colors"
+                >
                   Learn More
-                </Button>
+                </a>
               </div>
 
               {/* Research & Innovation */}
@@ -419,9 +440,12 @@ const About: React.FC = () => {
                   Supporting research initiatives and innovative approaches to
                   improve transplant outcomes and reduce waitlist times.
                 </p>
-                <Button href="/programs" variant="outline" size="sm">
+                <a
+                  href="/programs"
+                  className="inline-block bg-teal-600 text-white px-4 py-2 rounded-md hover:bg-teal-700 transition-colors"
+                >
                   Learn More
-                </Button>
+                </a>
               </div>
 
               {/* Volunteer Network */}
@@ -448,24 +472,25 @@ const About: React.FC = () => {
                   Mobilizing volunteers across the country to support our
                   mission and help connect donors with patients in need.
                 </p>
-                <Button href="/join-team" variant="outline" size="sm">
+                <a
+                  href="/join-team"
+                  className="inline-block bg-pink-600 text-white px-4 py-2 rounded-md hover:bg-pink-700 transition-colors"
+                >
                   Join Us
-                </Button>
+                </a>
               </div>
             </div>
           </div>
-        </Container>
-      </Section>
+        </div>
+      </section>
 
       {/* What Makes Kidney Forward Different Section */}
-      <Section
-        title="What Makes Kidney Forward Different"
-        subtitle=""
-        background="gray"
-        padding="xl"
-      >
-        <Container>
+      <section className="py-16 bg-gray-100">
+        <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
+              What Makes Kidney Forward Different
+            </h2>
             <div className="prose prose-lg max-w-none text-gray-700 space-y-6">
               <p>
                 What distinguishes Kidney Forward from other organizations is
@@ -490,13 +515,16 @@ const About: React.FC = () => {
               </p>
             </div>
           </div>
-        </Container>
-      </Section>
+        </div>
+      </section>
 
       {/* Contact Information Section */}
-      <Section title="Get In Touch" subtitle="" background="white" padding="xl">
-        <Container>
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
+              Get In Touch
+            </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               <div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">
@@ -583,34 +611,44 @@ const About: React.FC = () => {
                   Quick Links
                 </h3>
                 <div className="space-y-4">
-                  <Button href="/donors" variant="outline" fullWidth>
+                  <a
+                    href="/donors"
+                    className="block w-full text-center bg-blue-600 text-white px-4 py-3 rounded-md hover:bg-blue-700 transition-colors"
+                  >
                     Become a Donor
-                  </Button>
-                  <Button href="/patients" variant="outline" fullWidth>
+                  </a>
+                  <a
+                    href="/patients"
+                    className="block w-full text-center bg-green-600 text-white px-4 py-3 rounded-md hover:bg-green-700 transition-colors"
+                  >
                     Patient Resources
-                  </Button>
-                  <Button href="/get-involved" variant="outline" fullWidth>
+                  </a>
+                  <a
+                    href="/get-involved"
+                    className="block w-full text-center bg-purple-600 text-white px-4 py-3 rounded-md hover:bg-purple-700 transition-colors"
+                  >
                     Get Involved
-                  </Button>
-                  <Button href="/donation-form" variant="primary" fullWidth>
+                  </a>
+                  <a
+                    href="/donation-form"
+                    className="block w-full text-center bg-red-600 text-white px-4 py-3 rounded-md hover:bg-red-700 transition-colors"
+                  >
                     Make a Donation
-                  </Button>
+                  </a>
                 </div>
               </div>
             </div>
           </div>
-        </Container>
-      </Section>
+        </div>
+      </section>
 
       {/* Subscribe Section */}
-      <Section
-        title="Subscribe for News & Updates"
-        subtitle=""
-        background="primary"
-        padding="lg"
-      >
-        <Container>
+      <section className="py-16 bg-blue-600 text-white">
+        <div className="container mx-auto px-4">
           <div className="max-w-md mx-auto text-center">
+            <h2 className="text-3xl font-bold mb-8">
+              Subscribe for News & Updates
+            </h2>
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 sm:p-8">
               <form className="space-y-4">
                 <div>
@@ -623,20 +661,17 @@ const About: React.FC = () => {
                 <div className="text-xs text-white/70 text-left">
                   Leave this field empty if you're human:
                 </div>
-                <Button
+                <button
                   type="submit"
-                  variant="primary"
-                  size="lg"
-                  fullWidth
-                  className="bg-white text-primary hover:bg-gray-100"
+                  className="w-full bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
                 >
                   Subscribe
-                </Button>
+                </button>
               </form>
             </div>
           </div>
-        </Container>
-      </Section>
+        </div>
+      </section>
     </div>
   );
 };

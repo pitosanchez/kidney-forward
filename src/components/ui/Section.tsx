@@ -1,50 +1,85 @@
 import { ReactNode } from "react";
-import Container from "./Container";
 
 interface SectionProps {
   children: ReactNode;
-  title?: string;
-  subtitle?: string;
-  variant?: "default" | "alt";
   className?: string;
-  containerClassName?: string;
+  title?: ReactNode;
+  subtitle?: ReactNode;
+  background?: "white" | "gray" | "primary" | "secondary" | "accent" | "dark";
+  padding?: "none" | "sm" | "md" | "lg" | "xl" | "2xl";
+  container?: boolean;
+  containerSize?: "sm" | "md" | "lg" | "xl" | "full";
 }
 
 const Section = ({
   children,
+  className = "",
   title,
   subtitle,
-  variant = "default",
-  className = "",
-  containerClassName = "",
+  background = "white",
+  padding = "lg",
+  container = true,
+  containerSize = "lg",
 }: SectionProps) => {
-  const baseClasses = "py-20";
-  const variantClasses = {
-    default: "",
-    alt: "bg-gray-50",
+  const backgroundClasses = {
+    white: "bg-white",
+    gray: "bg-gray-50",
+    primary: "bg-forest-600 text-white",
+    secondary: "bg-sage-600 text-white",
+    accent: "bg-accent-600 text-white",
+    dark: "bg-gray-900 text-white",
   };
 
-  const classes = `${baseClasses} ${variantClasses[variant]} ${className}`;
+  const paddingClasses = {
+    none: "",
+    sm: "py-8 sm:py-12",
+    md: "py-12 sm:py-16",
+    lg: "py-16 sm:py-20",
+    xl: "py-20 sm:py-24",
+    "2xl": "py-24 sm:py-32",
+  };
+
+  const containerSizes = {
+    sm: "max-w-4xl",
+    md: "max-w-5xl",
+    lg: "max-w-7xl",
+    xl: "max-w-8xl",
+    full: "max-w-none",
+  };
+
+  const content = (
+    <>
+      {(title || subtitle) && (
+        <div className="text-center mb-12 sm:mb-16">
+          {subtitle && (
+            <div className="text-sm sm:text-base font-semibold uppercase tracking-wide mb-4 text-forest-600">
+              {subtitle}
+            </div>
+          )}
+          {title && (
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              {title}
+            </h2>
+          )}
+        </div>
+      )}
+      {children}
+    </>
+  );
 
   return (
-    <section className={classes}>
-      <Container className={containerClassName}>
-        {(title || subtitle) && (
-          <div className="text-center mb-16">
-            {title && (
-              <h2 className="text-3xl lg:text-4xl font-bold mb-4 font-heading">
-                {title}
-              </h2>
-            )}
-            {subtitle && (
-              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                {subtitle}
-              </p>
-            )}
-          </div>
-        )}
-        {children}
-      </Container>
+    <section
+      className={`${backgroundClasses[background]} ${paddingClasses[padding]} ${className}`}
+    >
+      {container ? (
+        <div
+          className={`mx-auto px-4 sm:px-6 lg:px-8 ${containerSizes[containerSize]}`}
+        >
+          {content}
+        </div>
+      ) : (
+        content
+      )}
     </section>
   );
 };
