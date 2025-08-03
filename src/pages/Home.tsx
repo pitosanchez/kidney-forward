@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useHeader } from "../contexts/HeaderContext";
 import { Button, Section, Container } from "../components/ui";
 import Hero from "../components/Hero";
+import { getAssetPath } from "../utils/assetPath";
 
 const Home: React.FC = () => {
   const { setIsTransparent } = useHeader();
@@ -129,7 +130,7 @@ const Home: React.FC = () => {
             <div className="bg-white rounded-lg shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-300 h-full flex flex-col">
               <div className="aspect-square overflow-hidden">
                 <img
-                  src="/images/olderwoman.webp"
+                  src={getAssetPath("/images/olderwoman.webp")}
                   alt="Nurse helping patient"
                   className="w-full h-full object-cover"
                 />
@@ -159,7 +160,7 @@ const Home: React.FC = () => {
             <div className="bg-white rounded-lg shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-300 h-full flex flex-col">
               <div className="aspect-square overflow-hidden">
                 <img
-                  src="/images/momdaughter.webp"
+                  src={getAssetPath("/images/momdaughter.webp")}
                   alt="Mother and daughter"
                   className="w-full h-full object-cover"
                 />
@@ -188,7 +189,7 @@ const Home: React.FC = () => {
             <div className="bg-white rounded-lg shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-300 h-full flex flex-col md:col-span-2 lg:col-span-1">
               <div className="aspect-square overflow-hidden">
                 <img
-                  src="/images/sponsors.webp"
+                  src={getAssetPath("/images/sponsors.webp")}
                   alt="Friends and family support"
                   className="w-full h-full object-cover"
                 />
@@ -227,7 +228,7 @@ const Home: React.FC = () => {
             <div className="flex flex-col lg:flex-row items-center justify-center space-y-8 lg:space-y-0 lg:space-x-16">
               <div className="flex-shrink-0">
                 <img
-                  src="/images/kidneyoutlined.webp"
+                  src={getAssetPath("/images/kidneyoutlined.webp")}
                   alt="Kidney Forward Mission"
                   className="w-32 h-32 sm:w-40 sm:h-40 object-contain"
                 />

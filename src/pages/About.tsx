@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useHeader } from "../contexts/HeaderContext";
 import { Button, Section, Container, Hero } from "../components/ui";
 import TeamCard3D from "../components/TeamCard3D";
+import { getAssetPath } from "../utils/assetPath";
 
 const About: React.FC = () => {
   const { setIsTransparent } = useHeader();
@@ -18,7 +19,7 @@ const About: React.FC = () => {
         title=""
         subtitle=""
         description=""
-        backgroundImage="/images/happymom.webp"
+        backgroundImage={getAssetPath("/images/happymom.webp")}
         backgroundVariant="image"
         overlay={false}
         className="min-h-[60vh] md:min-h-[70vh] lg:min-h-[80vh] flex items-center"
@@ -124,14 +125,14 @@ const About: React.FC = () => {
             <TeamCard3D
               name="Andrew Luu"
               title="Founder, CEO"
-              image="/images/adrewluu.jpg"
+              image={getAssetPath("/images/adrewluu.jpg")}
               href="/andrew-luu"
               delay={0.2}
             />
             <TeamCard3D
               name="Robert Sanchez"
               title="Director of the Jentosy Project"
-              image="/images/robertBlueSuit.webp"
+              image={getAssetPath("/images/robertBlueSuit.webp")}
               href="/robert-sanchez"
               delay={0.4}
             />

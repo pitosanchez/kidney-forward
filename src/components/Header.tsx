@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import Button from "./ui/Button";
 import { useHeader } from "../contexts/HeaderContext";
+import { getAssetPath } from "../utils/assetPath";
 
 // Types
 interface NavigationItem {
@@ -38,7 +39,7 @@ const ACTION_BUTTONS = [
 const Logo: React.FC = () => (
   <Link to="/" className="flex items-center justify-center lg:ml-16">
     <img
-      src="/images/logowhitesmaller.png"
+      src={getAssetPath("/images/logowhitesmaller.png")}
       alt="Kidney Forward Logo"
       className="h-8 sm:h-10 md:h-12 object-contain"
     />

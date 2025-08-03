@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useHeader } from "../contexts/HeaderContext";
 import { Linkedin } from "lucide-react";
+import { getAssetPath } from "../utils/assetPath";
 
 const AndrewLuu: React.FC = () => {
   const { setIsTransparent } = useHeader();
@@ -57,7 +58,7 @@ const AndrewLuu: React.FC = () => {
             <div className="order-1 lg:order-2">
               <div className="rounded-2xl overflow-hidden shadow-lg">
                 <img
-                  src="/images/adrewluu.jpg"
+                  src={getAssetPath("/images/adrewluu.jpg")}
                   alt="Andrew Luu"
                   className="w-full h-auto"
                 />
