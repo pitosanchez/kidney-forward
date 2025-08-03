@@ -249,7 +249,7 @@ const Home: React.FC = () => {
       <section
         className="py-16 sm:py-20 relative"
         style={{
-          backgroundImage: "url(/images/handsc.webp)",
+          backgroundImage: import.meta.env.BASE_URL + "/images/handsc.webp",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundAttachment: "fixed",
@@ -451,7 +451,7 @@ const Home: React.FC = () => {
       <section
         className="py-16 sm:py-20 relative overflow-hidden"
         style={{
-          backgroundImage: "url(/images/womanlaugh.webp)",
+          backgroundImage: `url(${getAssetPath("/images/womanlaugh.webp")})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundAttachment: "fixed",
