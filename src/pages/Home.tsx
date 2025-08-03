@@ -288,7 +288,7 @@ const Home: React.FC = () => {
                   </svg>
                 </div>
                 <Button
-                  href="/donor-registry"
+                  href="/donors"
                   variant="outline"
                   className="w-full border-white text-white hover:bg-white hover:text-blue-600"
                 >
@@ -318,7 +318,7 @@ const Home: React.FC = () => {
                   </svg>
                 </div>
                 <Button
-                  href="/volunteer"
+                  href="/get-involved"
                   variant="outline"
                   className="w-full border-white text-white hover:bg-white hover:text-green-500"
                 >
@@ -347,7 +347,7 @@ const Home: React.FC = () => {
                   </svg>
                 </div>
                 <Button
-                  href="/donate"
+                  href="/get-involved"
                   variant="outline"
                   className="w-full border-white text-white hover:bg-white hover:text-gray-700"
                 >
@@ -378,7 +378,7 @@ const Home: React.FC = () => {
                   </svg>
                 </div>
                 <Button
-                  href="/contact"
+                  href="/about"
                   variant="outline"
                   className="w-full border-white text-white hover:bg-white hover:text-green-500"
                 >
@@ -519,7 +519,7 @@ const Home: React.FC = () => {
               <Button href="/get-involved" variant="primary" size="lg">
                 Get Involved
               </Button>
-              <Button href="/contact" variant="outline" size="lg">
+              <Button href="/about" variant="outline" size="lg">
                 Contact Us
               </Button>
             </div>

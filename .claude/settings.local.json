@@ -12,7 +12,9 @@
       "Bash(rm:*)",
       "Bash(touch:*)",
       "Bash(pkill:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(npm run lint)",
+      "Bash(npm run type-check:*)"
     ],
     "deny": []
   }

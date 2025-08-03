@@ -78,16 +78,16 @@ const Donors: React.FC = () => {
               </h2>
               <div className="space-y-4">
                 <Button
-                  href="/donor-registry"
+                  href="/get-involved"
                   variant="primary"
                   className="w-full"
                 >
                   Join the Donor Registry
                 </Button>
-                <Button href="/donor-info" variant="outline" className="w-full">
+                <Button href="/donors" variant="outline" className="w-full">
                   Learn More About Donation
                 </Button>
-                <Button href="/contact" variant="outline" className="w-full">
+                <Button href="/about" variant="outline" className="w-full">
                   Contact Our Team
                 </Button>
               </div>

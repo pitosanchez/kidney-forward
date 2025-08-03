@@ -34,7 +34,7 @@ const Programs: React.FC = () => {
                 donors with patients in need of kidney transplants.
               </p>
               <Button
-                href="/donor-registry"
+                href="/donors"
                 variant="primary"
                 className="w-full"
               >

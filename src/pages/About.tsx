@@ -391,7 +391,7 @@ const About: React.FC = () => {
                   centers, and community organizations to expand our reach and
                   impact.
                 </p>
-                <Button href="/corporate-partners" variant="outline" size="sm">
+                <Button href="/get-involved" variant="outline" size="sm">
                   Learn More
                 </Button>
               </div>
@@ -449,7 +449,7 @@ const About: React.FC = () => {
                   Mobilizing volunteers across the country to support our
                   mission and help connect donors with patients in need.
                 </p>
-                <Button href="/join-team" variant="outline" size="sm">
+                <Button href="/get-involved" variant="outline" size="sm">
                   Join Us
                 </Button>
               </div>
@@ -593,7 +593,7 @@ const About: React.FC = () => {
                   <Button href="/get-involved" variant="outline" fullWidth>
                     Get Involved
                   </Button>
-                  <Button href="/donation-form" variant="primary" fullWidth>
+                  <Button href="/get-involved" variant="primary" fullWidth>
                     Make a Donation
                   </Button>
                 </div>

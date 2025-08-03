@@ -35,12 +35,6 @@ function App() {
               <Route path="/programs" element={<Programs />} />
               <Route path="/andrew-luu" element={<AndrewLuu />} />
               <Route path="/robert-sanchez" element={<RobertSanchez />} />
-              <Route path="/contact" element={<About />} />
-              <Route path="/donor-info" element={<Donors />} />
-              <Route path="/patient-registry" element={<Patients />} />
-              <Route path="/volunteer" element={<GetInvolved />} />
-              <Route path="/donate" element={<GetInvolved />} />
-              <Route path="/donor-registry" element={<Donors />} />
             </Routes>
           </main>
           <Footer />

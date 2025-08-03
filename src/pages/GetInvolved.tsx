@@ -34,7 +34,7 @@ const GetInvolved: React.FC = () => {
                 about the process and how we support donors.
               </p>
               <Button
-                href="/donor-registry"
+                href="/donors"
                 variant="primary"
                 className="w-full"
               >
@@ -50,7 +50,7 @@ const GetInvolved: React.FC = () => {
                 Help us spread awareness and support our mission through
                 volunteering opportunities.
               </p>
-              <Button href="/volunteer" variant="outline" className="w-full">
+              <Button href="/get-involved" variant="outline" className="w-full">
                 Volunteer
               </Button>
             </div>
@@ -61,7 +61,7 @@ const GetInvolved: React.FC = () => {
                 Support our programs and initiatives through financial
                 contributions to help more patients.
               </p>
-              <Button href="/donate" variant="outline" className="w-full">
+              <Button href="/get-involved" variant="outline" className="w-full">
                 Donate
               </Button>
             </div>
@@ -74,7 +74,7 @@ const GetInvolved: React.FC = () => {
                 Help educate others about kidney donation and the importance of
                 organ transplantation.
               </p>
-              <Button href="/awareness" variant="outline" className="w-full">
+              <Button href="/about" variant="outline" className="w-full">
                 Learn More
               </Button>
             </div>

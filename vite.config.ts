@@ -1,8 +1,14 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
+const base = process.env.NODE_ENV === "development" ? "/" : "/kidney-forward/";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: "/kidney-forward/", // Replace with your repository name
+  base,
+  build: {
+    rollupOptions: {
+      input: "./public/index.html",
+    },
+  },
 });

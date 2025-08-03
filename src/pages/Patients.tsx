@@ -79,20 +79,20 @@ const Patients: React.FC = () => {
               </h2>
               <div className="space-y-4">
                 <Button
-                  href="/patient-registry"
+                  href="/get-involved"
                   variant="primary"
                   className="w-full"
                 >
                   Register as a Patient
                 </Button>
                 <Button
-                  href="/patient-resources"
+                  href="/patients"
                   variant="outline"
                   className="w-full"
                 >
                   Patient Resources
                 </Button>
-                <Button href="/contact" variant="outline" className="w-full">
+                <Button href="/about" variant="outline" className="w-full">
                   Contact Our Team
                 </Button>
               </div>

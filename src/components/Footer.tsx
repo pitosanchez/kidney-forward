@@ -6,7 +6,7 @@ const Footer = () => {
   const quickLinks = [
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about" },
-    { name: "Contact Us", href: "/contact" },
+    { name: "Contact Us", href: "/about" },
     { name: "Privacy Policy and Terms and Conditions", href: "/privacy" },
   ];
 
@@ -99,7 +99,7 @@ const Footer = () => {
 
               {/* Volunteer Button */}
               <Button
-                href="/volunteer"
+                href="/get-involved"
                 variant="primary"
                 size="md"
                 className="bg-blue-600 text-white font-bold hover:bg-blue-700 mb-6 sm:mb-8"
@@ -143,7 +143,7 @@ const Footer = () => {
                   Terms of Service
                 </Link>
                 <Link
-                  to="/contact"
+                  to="/about"
                   className="hover:text-white transition-colors duration-200"
                 >
                   Contact
