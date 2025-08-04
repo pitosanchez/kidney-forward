@@ -145,7 +145,9 @@ const TeamCard3D: React.FC<TeamCard3DProps> = ({ name, title, image, href, delay
       />
 
       {/* Card content */}
-      <div className="relative bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20 p-0 overflow-hidden shadow-2xl">
+      <div className="relative bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20 p-0 overflow-hidden shadow-2xl drop-shadow-2xl" style={{
+        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1), 0 8px 32px rgba(0, 0, 0, 0.12)'
+      }}>
         {/* Image container */}
         <div
           ref={imageRef}

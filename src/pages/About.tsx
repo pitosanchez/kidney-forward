@@ -151,7 +151,9 @@ const About: React.FC = () => {
           <div className="max-w-4xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               {/* Mission */}
-              <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8">
+              <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8 shadow-xl drop-shadow-lg" style={{
+                boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.05)'
+              }}>
                 <div className="flex items-center mb-6">
                   <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mr-4">
                     <svg
@@ -181,7 +183,9 @@ const About: React.FC = () => {
               </div>
 
               {/* Vision */}
-              <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-8">
+              <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-8 shadow-xl drop-shadow-lg" style={{
+                boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.05)'
+              }}>
                 <div className="flex items-center mb-6">
                   <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mr-4">
                     <svg
@@ -278,7 +282,9 @@ const About: React.FC = () => {
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {/* Living Donor Activation */}
-              <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
+              <div className="bg-white rounded-2xl shadow-lg drop-shadow-xl p-8 border border-gray-100" style={{
+                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.15), 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
+              }}>
                 <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
                   <svg
                     className="w-8 h-8 text-blue-600"
@@ -308,7 +314,9 @@ const About: React.FC = () => {
               </div>
 
               {/* Patient Support */}
-              <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
+              <div className="bg-white rounded-2xl shadow-lg drop-shadow-xl p-8 border border-gray-100" style={{
+                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.15), 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
+              }}>
                 <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mb-6">
                   <svg
                     className="w-8 h-8 text-green-600"
@@ -338,7 +346,9 @@ const About: React.FC = () => {
               </div>
 
               {/* Education & Advocacy */}
-              <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
+              <div className="bg-white rounded-2xl shadow-lg drop-shadow-xl p-8 border border-gray-100" style={{
+                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.15), 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
+              }}>
                 <div className="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mb-6">
                   <svg
                     className="w-8 h-8 text-purple-600"
@@ -367,7 +377,9 @@ const About: React.FC = () => {
               </div>
 
               {/* Community Outreach */}
-              <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
+              <div className="bg-white rounded-2xl shadow-lg drop-shadow-xl p-8 border border-gray-100" style={{
+                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.15), 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
+              }}>
                 <div className="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mb-6">
                   <svg
                     className="w-8 h-8 text-orange-600"
@@ -397,7 +409,9 @@ const About: React.FC = () => {
               </div>
 
               {/* Research & Innovation */}
-              <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
+              <div className="bg-white rounded-2xl shadow-lg drop-shadow-xl p-8 border border-gray-100" style={{
+                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.15), 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
+              }}>
                 <div className="w-16 h-16 bg-teal-100 rounded-2xl flex items-center justify-center mb-6">
                   <svg
                     className="w-8 h-8 text-teal-600"
@@ -426,7 +440,9 @@ const About: React.FC = () => {
               </div>
 
               {/* Volunteer Network */}
-              <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
+              <div className="bg-white rounded-2xl shadow-lg drop-shadow-xl p-8 border border-gray-100" style={{
+                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.15), 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
+              }}>
                 <div className="w-16 h-16 bg-pink-100 rounded-2xl flex items-center justify-center mb-6">
                   <svg
                     className="w-8 h-8 text-pink-600"

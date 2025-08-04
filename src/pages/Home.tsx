@@ -86,7 +86,9 @@ const Home: React.FC = () => {
 
           {/* Video Container */}
           <div className="max-w-4xl mx-auto">
-            <div className="relative bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl transform hover:scale-105 transition-all duration-500 border border-gray-100">
+            <div className="relative bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl drop-shadow-2xl transform hover:scale-105 transition-all duration-500 border border-gray-100" style={{
+              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
+            }}>
               <div className="aspect-video relative">
                 <iframe
                   src="https://www.youtube.com/embed/DVR1E4DgWJY?rel=0&modestbranding=1"
@@ -172,7 +174,9 @@ const Home: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {/* For Patients */}
-            <div className="bg-white rounded-lg shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-300 h-full flex flex-col">
+            <div className="bg-white rounded-lg shadow-2xl drop-shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-300 h-full flex flex-col" style={{
+              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
+            }}>
               <div className="aspect-square overflow-hidden">
                 <img
                   src={getAssetPath("/images/olderwoman.webp")}
@@ -202,7 +206,9 @@ const Home: React.FC = () => {
             </div>
 
             {/* For Potential Donors */}
-            <div className="bg-white rounded-lg shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-300 h-full flex flex-col">
+            <div className="bg-white rounded-lg shadow-2xl drop-shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-300 h-full flex flex-col" style={{
+              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
+            }}>
               <div className="aspect-square overflow-hidden">
                 <img
                   src={getAssetPath("/images/momdaughter.webp")}
@@ -231,7 +237,9 @@ const Home: React.FC = () => {
             </div>
 
             {/* For Friends and Family */}
-            <div className="bg-white rounded-lg shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-300 h-full flex flex-col md:col-span-2 lg:col-span-1">
+            <div className="bg-white rounded-lg shadow-2xl drop-shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-300 h-full flex flex-col md:col-span-2 lg:col-span-1" style={{
+              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
+            }}>
               <div className="aspect-square overflow-hidden">
                 <img
                   src={getAssetPath("/images/sponsors.webp")}
@@ -313,7 +321,9 @@ const Home: React.FC = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
             {/* Join Living Donor Database */}
-            <div className="bg-blue-600 rounded-lg p-6 sm:p-8 shadow-2xl transform hover:scale-105 transition-all duration-300 h-full flex flex-col">
+            <div className="bg-blue-600 rounded-lg p-6 sm:p-8 shadow-2xl drop-shadow-2xl transform hover:scale-105 transition-all duration-300 h-full flex flex-col" style={{
+              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
+            }}>
               <h3 className="text-white text-lg sm:text-xl font-bold mb-4 leading-tight">
                 Join Living Donor Database
               </h3>
@@ -343,7 +353,9 @@ const Home: React.FC = () => {
             </div>
 
             {/* Become a Volunteer */}
-            <div className="bg-green-500 rounded-lg p-6 sm:p-8 shadow-2xl transform hover:scale-105 transition-all duration-300 h-full flex flex-col">
+            <div className="bg-green-500 rounded-lg p-6 sm:p-8 shadow-2xl drop-shadow-2xl transform hover:scale-105 transition-all duration-300 h-full flex flex-col" style={{
+              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
+            }}>
               <h3 className="text-white text-lg sm:text-xl font-bold mb-4 leading-tight">
                 Become a Volunteer
               </h3>
@@ -373,7 +385,9 @@ const Home: React.FC = () => {
             </div>
 
             {/* Contribute Financially */}
-            <div className="bg-gray-700 rounded-lg p-6 sm:p-8 shadow-2xl transform hover:scale-105 transition-all duration-300 h-full flex flex-col">
+            <div className="bg-gray-700 rounded-lg p-6 sm:p-8 shadow-2xl drop-shadow-2xl transform hover:scale-105 transition-all duration-300 h-full flex flex-col" style={{
+              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
+            }}>
               <h3 className="text-white text-lg sm:text-xl font-bold mb-4 leading-tight">
                 Contribute Financially
               </h3>
@@ -402,7 +416,9 @@ const Home: React.FC = () => {
             </div>
 
             {/* Refer a Patient */}
-            <div className="bg-green-500 rounded-lg p-6 sm:p-8 shadow-2xl transform hover:scale-105 transition-all duration-300 h-full flex flex-col">
+            <div className="bg-green-500 rounded-lg p-6 sm:p-8 shadow-2xl drop-shadow-2xl transform hover:scale-105 transition-all duration-300 h-full flex flex-col" style={{
+              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
+            }}>
               <h3 className="text-white text-lg sm:text-xl font-bold mb-4 leading-tight">
                 Refer a Patient
               </h3>
@@ -509,7 +525,9 @@ const Home: React.FC = () => {
           <div className="flex justify-center">
             {/* Glass-morphism 3D Card */}
             <div className="max-w-2xl mx-auto">
-              <div className="bg-white/10 backdrop-blur-md rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 shadow-2xl border border-white/20 transform hover:scale-105 transition-all duration-500 relative overflow-hidden">
+              <div className="bg-white/10 backdrop-blur-md rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 shadow-2xl drop-shadow-2xl border border-white/20 transform hover:scale-105 transition-all duration-500 relative overflow-hidden" style={{
+                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1)'
+              }}>
                 {/* 3D Effect Layers */}
                 <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-2xl sm:rounded-3xl"></div>
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
