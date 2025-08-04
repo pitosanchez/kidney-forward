@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Facebook, Instagram, Linkedin } from "lucide-react";
 import { Button, Container } from "./ui";
+import { getAssetPath } from "../utils/assetPath";
 
 const Footer = () => {
   const quickLinks = [
@@ -25,22 +26,22 @@ const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white">
       <Container>
-        <div className="py-12 sm:py-16">
+        <div className="py-8 sm:py-10">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
             {/* Left Column - Subscription Section */}
             <div className="lg:col-span-1">
               {/* Logo */}
-              <div className="mb-6">
-                <div className="text-xl sm:text-2xl font-bold">
-                  <span className="text-white">Kidney </span>
-                  <span className="text-green-400">88</span>
-                  <span className="text-white"> FORWARD</span>
-                </div>
+              <div className="mb-4">
+                <img
+                  src={getAssetPath("/images/kflogolong.png")}
+                  alt="Kidney Forward"
+                  className="h-8 sm:h-10 w-auto"
+                />
               </div>
 
               {/* Subscribe Section */}
               <div>
-                <h3 className="text-lg sm:text-xl font-bold mb-4">
+                <h3 className="text-lg font-bold mb-3">
                   Subscribe for News & Updates
                 </h3>
                 <div className="space-y-4">
@@ -62,10 +63,10 @@ const Footer = () => {
 
             {/* Middle Column - Quick Links */}
             <div className="lg:col-span-1">
-              <h3 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6">
+              <h3 className="text-lg font-bold mb-3">
                 Quick Links
               </h3>
-              <ul className="space-y-2 sm:space-y-3">
+              <ul className="space-y-2">
                 {quickLinks.map((link) => (
                   <li key={link.name}>
                     <Link
@@ -81,10 +82,10 @@ const Footer = () => {
 
             {/* Right Column - Programs & Call to Action */}
             <div className="lg:col-span-1">
-              <h3 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6">
+              <h3 className="text-lg font-bold mb-3">
                 Programs
               </h3>
-              <ul className="space-y-2 sm:space-y-3 mb-6 sm:mb-8">
+              <ul className="space-y-2 mb-4">
                 {programs.map((program) => (
                   <li key={program.name}>
                     <Link
@@ -102,7 +103,7 @@ const Footer = () => {
                 href="/get-involved"
                 variant="primary"
                 size="md"
-                className="bg-blue-600 text-white font-bold hover:bg-blue-700 mb-6 sm:mb-8"
+                className="bg-blue-600 text-white font-bold hover:bg-blue-700 mb-4"
               >
                 VOLUNTEER →
               </Button>
@@ -124,7 +125,7 @@ const Footer = () => {
           </div>
 
           {/* Bottom Section - Copyright and Additional Links */}
-          <div className="border-t border-gray-800 mt-8 sm:mt-12 pt-8 sm:pt-12">
+          <div className="border-t border-gray-800 mt-6 pt-6">
             <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
               <div className="text-sm text-gray-400 text-center sm:text-left">
                 © 2024 Kidney Forward. All rights reserved.
