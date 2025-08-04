@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useHeader } from "../contexts/HeaderContext";
 import { Button, Section, Container } from "../components/ui";
 import Hero from "../components/Hero";
@@ -6,14 +6,59 @@ import { getAssetPath } from "../utils/assetPath";
 
 const Home: React.FC = () => {
   const { setIsTransparent } = useHeader();
+  const statisticsRef = useRef<HTMLElement>(null);
+
+  const animateNumber = (
+    element: HTMLElement,
+    target: number,
+    duration: number = 2000
+  ) => {
+    let start = 0;
+    const increment = target / (duration / 16);
+    
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= target) {
+        element.textContent = target.toString();
+        clearInterval(timer);
+      } else {
+        element.textContent = Math.floor(start).toString();
+      }
+    }, 16);
+  };
 
   useEffect(() => {
     // Set header transparent for hero section
     setIsTransparent(true);
 
+    // Set up intersection observer for statistics animation
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const animatedNumbers = entry.target.querySelectorAll('.animate-number');
+            animatedNumbers.forEach((numberElement) => {
+              const target = parseInt(numberElement.getAttribute('data-target') || '0');
+              animateNumber(numberElement as HTMLElement, target);
+            });
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.5,
+        rootMargin: '0px 0px -100px 0px'
+      }
+    );
+
+    if (statisticsRef.current) {
+      observer.observe(statisticsRef.current);
+    }
+
     // Cleanup function to reset header when component unmounts
     return () => {
       setIsTransparent(false);
+      observer.disconnect();
     };
   }, [setIsTransparent]);
 
@@ -391,7 +436,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Statistics Section */}
-      <section className="py-16 sm:py-20 bg-black">
+      <section ref={statisticsRef} className="py-16 sm:py-20 bg-black">
         <Container>
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-blue-300 text-lg sm:text-xl font-semibold mb-4">
