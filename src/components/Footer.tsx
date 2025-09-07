@@ -24,7 +24,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-slate-800 text-white">
       <Container>
         <div className="py-8 sm:py-10">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
@@ -48,12 +48,12 @@ const Footer = () => {
                   <input
                     type="email"
                     placeholder="Your email address"
-                    className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base"
+                    className="w-full px-4 py-3 rounded-lg bg-slate-700 border border-slate-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm sm:text-base"
                   />
                   <Button
                     variant="primary"
                     size="md"
-                    className="w-full bg-gray-300 text-black font-bold hover:bg-gray-200"
+                    className="w-full bg-gray-300 text-slate-800 font-bold hover:bg-gray-200"
                   >
                     SUBSCRIBE
                   </Button>
@@ -71,7 +71,7 @@ const Footer = () => {
                   <li key={link.name}>
                     <Link
                       to={link.href}
-                      className="text-white hover:text-gray-300 transition-colors duration-200 text-sm sm:text-base"
+                      className="text-white hover:text-primary-300 transition-colors duration-200 text-sm sm:text-base"
                     >
                       {link.name}
                     </Link>
@@ -90,7 +90,7 @@ const Footer = () => {
                   <li key={program.name}>
                     <Link
                       to={program.href}
-                      className="text-white hover:text-gray-300 transition-colors duration-200 text-sm sm:text-base"
+                      className="text-white hover:text-primary-300 transition-colors duration-200 text-sm sm:text-base"
                     >
                       {program.name}
                     </Link>
@@ -103,7 +103,7 @@ const Footer = () => {
                 href="/get-involved"
                 variant="primary"
                 size="md"
-                className="bg-blue-600 text-white font-bold hover:bg-blue-700 mb-4"
+                className="bg-primary-500 text-white font-bold hover:bg-primary-600 mb-4"
               >
                 VOLUNTEER →
               </Button>
@@ -114,7 +114,7 @@ const Footer = () => {
                   <a
                     key={social.name}
                     href={social.href}
-                    className="w-8 h-8 text-white hover:text-gray-300 transition-colors duration-200"
+                    className="w-8 h-8 text-white hover:text-primary-300 transition-colors duration-200"
                     aria-label={social.name}
                   >
                     <social.icon className="w-full h-full" />
@@ -125,27 +125,27 @@ const Footer = () => {
           </div>
 
           {/* Bottom Section - Copyright and Additional Links */}
-          <div className="border-t border-gray-800 mt-6 pt-6">
+          <div className="border-t border-slate-700 mt-6 pt-6">
             <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
-              <div className="text-sm text-gray-400 text-center sm:text-left">
+              <div className="text-sm text-gray-300 text-center sm:text-left">
                 © 2024 Kidney Forward. All rights reserved.
               </div>
-              <div className="flex flex-wrap justify-center sm:justify-end space-x-6 text-sm text-gray-400">
+              <div className="flex flex-wrap justify-center sm:justify-end space-x-6 text-sm text-gray-300">
                 <Link
                   to="/privacy"
-                  className="hover:text-white transition-colors duration-200"
+                  className="hover:text-primary-300 transition-colors duration-200"
                 >
                   Privacy Policy
                 </Link>
                 <Link
                   to="/terms"
-                  className="hover:text-white transition-colors duration-200"
+                  className="hover:text-primary-300 transition-colors duration-200"
                 >
                   Terms of Service
                 </Link>
                 <Link
                   to="/about"
-                  className="hover:text-white transition-colors duration-200"
+                  className="hover:text-primary-300 transition-colors duration-200"
                 >
                   Contact
                 </Link>

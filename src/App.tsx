@@ -1,19 +1,28 @@
-import { useEffect } from "react";
+import { useEffect, lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ErrorBoundary from "./components/ErrorBoundary";
 import ScrollToTop from "./components/ScrollToTop";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Donors from "./pages/Donors";
-import Patients from "./pages/Patients";
-import GetInvolved from "./pages/GetInvolved";
-import Programs from "./pages/Programs";
-import AndrewLuu from "./pages/AndrewLuu";
-import RobertSanchez from "./pages/RobertSanchez";
+import LoadingSpinner from "./components/LoadingSpinner";
+import PerformanceMonitor from "./components/PerformanceMonitor";
 import { HeaderProvider } from "./contexts/HeaderContext";
 import { initNumberAnimation } from "./utils/numberAnimation";
+
+const Home = lazy(() => import("./pages/Home"));
+const About = lazy(() => import("./pages/About"));
+const Donors = lazy(() => import("./pages/Donors"));
+const Patients = lazy(() => import("./pages/Patients"));
+const GetInvolved = lazy(() => import("./pages/GetInvolved"));
+const Programs = lazy(() => import("./pages/Programs"));
+const AndrewLuu = lazy(() => import("./pages/AndrewLuu"));
+const RobertSanchez = lazy(() => import("./pages/RobertSanchez"));
+const Partnership = lazy(() => import("./pages/Partnership"));
+
+// Story pages
+const SarahStory = lazy(() => import("./pages/stories/Sarah"));
+const MariaAnaStory = lazy(() => import("./pages/stories/MariaAna"));
+const JamesStory = lazy(() => import("./pages/stories/James"));
 
 function App() {
   useEffect(() => {
@@ -24,20 +33,29 @@ function App() {
   return (
     <HeaderProvider>
       <ErrorBoundary>
+        <PerformanceMonitor />
         <ScrollToTop />
         <div className="min-h-screen flex flex-col">
           <Header />
           <main className="flex-1">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/donors" element={<Donors />} />
-              <Route path="/patients" element={<Patients />} />
-              <Route path="/get-involved" element={<GetInvolved />} />
-              <Route path="/programs" element={<Programs />} />
-              <Route path="/andrew-luu" element={<AndrewLuu />} />
-              <Route path="/robert-sanchez" element={<RobertSanchez />} />
-            </Routes>
+            <Suspense fallback={<LoadingSpinner />}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/donors" element={<Donors />} />
+                <Route path="/patients" element={<Patients />} />
+                <Route path="/get-involved" element={<GetInvolved />} />
+                <Route path="/programs" element={<Programs />} />
+                <Route path="/andrew-luu" element={<AndrewLuu />} />
+                <Route path="/robert-sanchez" element={<RobertSanchez />} />
+                <Route path="/partnership" element={<Partnership />} />
+
+                {/* Story routes */}
+                <Route path="/stories/sarah" element={<SarahStory />} />
+                <Route path="/stories/maria-ana" element={<MariaAnaStory />} />
+                <Route path="/stories/james" element={<JamesStory />} />
+              </Routes>
+            </Suspense>
           </main>
           <Footer />
         </div>

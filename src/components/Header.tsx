@@ -26,12 +26,12 @@ const ACTION_BUTTONS = [
   {
     text: "Contribute",
     href: "/contribute",
-    className: "bg-green-500 hover:bg-green-600",
+    className: "bg-accent-400 hover:bg-accent-500",
   },
   {
     text: "Become A Donor",
     href: "/become-donor",
-    className: "bg-blue-600 hover:bg-blue-700",
+    className: "bg-primary-500 hover:bg-primary-600",
   },
 ];
 
@@ -52,7 +52,7 @@ const NavigationLink: React.FC<{
   return (
     <Link
       to={item.href}
-      className="text-xs sm:text-sm font-semibold text-white hover:text-teal-200 transition-colors duration-200 tracking-wide whitespace-nowrap"
+      className="text-xs sm:text-sm font-semibold text-white hover:text-primary-200 transition-colors duration-200 tracking-wide whitespace-nowrap"
     >
       {item.name}
     </Link>
@@ -85,7 +85,7 @@ const ActionButtons: React.FC<{ buttons: typeof ACTION_BUTTONS }> = ({
         href={button.href}
         variant="primary"
         size="sm"
-        className={`${button.className} text-white font-semibold px-3 sm:px-6 py-2 rounded-full text-xs sm:text-sm`}
+        className={`${button.className} text-white font-semibold px-3 sm:px-6 py-2 rounded-full text-xs sm:text-sm whitespace-nowrap`}
       >
         {button.text}
       </Button>
@@ -100,7 +100,7 @@ const MobileMenuButton: React.FC<{
   <div className="lg:hidden">
     <button
       onClick={onToggle}
-      className="text-white hover:text-teal-200 transition-colors duration-200 p-2"
+      className="text-white hover:text-primary-200 transition-colors duration-200 p-2"
       aria-label={isOpen ? "Close menu" : "Open menu"}
     >
       {isOpen ? (
@@ -121,19 +121,19 @@ const MobileNavigation: React.FC<{
   if (!isOpen) return null;
 
   return (
-    <div className="lg:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-md shadow-xl border-t border-gray-200">
+    <div className="lg:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-md shadow-xl border-t border-gray-300">
       <div className="px-4 pt-4 pb-6 space-y-2 sm:space-y-3">
         {items.map((item) => (
           <Link
             key={item.name}
             to={item.href}
-            className="block px-4 py-3 text-base sm:text-lg font-semibold text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors duration-200 cursor-pointer"
+            className="block px-4 py-3 text-base sm:text-lg font-semibold text-slate-700 hover:text-slate-900 hover:bg-gray-50 rounded-lg transition-colors duration-200 cursor-pointer"
             onClick={onClose}
           >
             {item.name}
           </Link>
         ))}
-        <div className="pt-4 space-y-3 border-t border-gray-200">
+        <div className="pt-4 space-y-3 border-t border-gray-300">
           {buttons.map((button) => (
             <Button
               key={button.text}
@@ -169,8 +169,8 @@ const Header: React.FC<HeaderProps> = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isTransparent
-          ? "bg-teal-900/80 backdrop-blur-md border-b border-teal-200/30"
-          : "bg-teal-900/95 backdrop-blur-md border-b border-teal-200/50"
+          ? "bg-secondary-600/80 backdrop-blur-md border-b border-secondary-300/30"
+          : "bg-secondary-600/95 backdrop-blur-md border-b border-secondary-300/50"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

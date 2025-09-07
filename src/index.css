@@ -8,7 +8,7 @@
   }
 
   body {
-    @apply font-sans text-gray-900 bg-white;
+    @apply font-sans text-slate-900 bg-white;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
@@ -43,7 +43,7 @@
 
   /* Focus styles for accessibility */
   *:focus {
-    @apply outline-none ring-2 ring-forest-500 ring-offset-2;
+    @apply outline-none ring-2 ring-primary-500 ring-offset-2;
   }
 
   /* Custom scrollbar */
@@ -56,26 +56,26 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-forest-600 rounded-full;
+    @apply bg-primary-600 rounded-full;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-forest-700;
+    @apply bg-primary-700;
   }
 }
 
 @layer components {
   /* Button variants */
   .btn-primary {
-    @apply bg-forest-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-forest-700 transition-all duration-200 focus:ring-2 focus:ring-forest-500 focus:ring-offset-2;
+    @apply bg-primary-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-primary-600 transition-all duration-200 focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
   }
 
   .btn-secondary {
-    @apply bg-sage-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-sage-700 transition-all duration-200 focus:ring-2 focus:ring-sage-500 focus:ring-offset-2;
+    @apply bg-secondary-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-secondary-600 transition-all duration-200 focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2;
   }
 
   .btn-outline {
-    @apply border-2 border-forest-600 text-forest-600 px-6 py-3 rounded-full font-semibold hover:bg-forest-600 hover:text-white transition-all duration-200 focus:ring-2 focus:ring-forest-500 focus:ring-offset-2;
+    @apply border-2 border-primary-500 text-primary-600 px-6 py-3 rounded-full font-semibold hover:bg-primary-500 hover:text-white transition-all duration-200 focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
   }
 
   /* Card component */
@@ -85,12 +85,12 @@
 
   /* Input field */
   .input-field {
-    @apply w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-forest-500 focus:border-transparent transition-all duration-200;
+    @apply w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200;
   }
 
   /* Gradient text */
   .gradient-text {
-    @apply bg-gradient-to-r from-forest-600 to-sage-600 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent;
   }
 
   /* Responsive container */

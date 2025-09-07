@@ -1,12 +1,15 @@
 import React, { useEffect, useRef } from "react";
 import { useHeader } from "../contexts/HeaderContext";
 import { Button, Section, Container } from "../components/ui";
-import Hero from "../components/Hero";
+import OptimizedHero from "../components/OptimizedHero";
+import LazyImage from "../components/LazyImage";
 import { getAssetPath } from "../utils/assetPath";
+import { usePerformanceOptimization } from "../hooks/usePerformanceOptimization";
 
 const Home: React.FC = () => {
   const { setIsTransparent } = useHeader();
-  const statisticsRef = useRef<HTMLElement>(null);
+  const statisticsRef = useRef<HTMLDivElement>(null);
+  usePerformanceOptimization();
 
   const animateNumber = (
     element: HTMLElement,
@@ -64,19 +67,19 @@ const Home: React.FC = () => {
 
   return (
     <div>
-      <Hero />
+      <OptimizedHero />
 
       {/* Dedicated Video Section */}
-      <Section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-gray-50 via-white to-blue-50">
+      <Section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-gray-50 via-white to-primary-50">
         <Container>
           <div className="text-center mb-12 sm:mb-16">
-            <div className="text-blue-600 text-sm font-semibold uppercase tracking-wide mb-4">
+            <div className="text-primary-600 text-sm font-semibold uppercase tracking-wide mb-4">
               OUR STORY
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
               It Only Takes One
             </h2>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
               Discover how one person's decision to become a living donor can
               transform countless lives. Our mission is simple yet profound: to
               eliminate the kidney transplant waitlist through education,
@@ -112,15 +115,15 @@ const Home: React.FC = () => {
                 </p>
                 <div className="flex flex-col sm:flex-row justify-center mt-6 space-y-2 sm:space-y-0 sm:space-x-4">
                   <div className="flex items-center justify-center sm:justify-start space-x-2 text-gray-400">
-                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                    <div className="w-2 h-2 bg-accent-400 rounded-full"></div>
                     <span className="text-sm">Living Donation</span>
                   </div>
                   <div className="flex items-center justify-center sm:justify-start space-x-2 text-gray-400">
-                    <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                    <div className="w-2 h-2 bg-primary-400 rounded-full"></div>
                     <span className="text-sm">Community Impact</span>
                   </div>
                   <div className="flex items-center justify-center sm:justify-start space-x-2 text-gray-400">
-                    <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
+                    <div className="w-2 h-2 bg-secondary-400 rounded-full"></div>
                     <span className="text-sm">Hope & Healing</span>
                   </div>
                 </div>
@@ -130,7 +133,7 @@ const Home: React.FC = () => {
 
           {/* Call to Action */}
           <div className="text-center mt-8 sm:mt-12">
-            <p className="text-gray-600 text-base sm:text-lg mb-6 max-w-2xl mx-auto">
+            <p className="text-slate-600 text-base sm:text-lg mb-6 max-w-2xl mx-auto">
               Ready to make a difference? Join thousands of others who are
               helping to eliminate the kidney transplant waitlist.
             </p>
@@ -139,7 +142,7 @@ const Home: React.FC = () => {
                 href="/get-involved"
                 variant="primary"
                 size="lg"
-                className="bg-blue-600 hover:bg-blue-700 text-white font-semibold"
+                className="bg-primary-500 hover:bg-primary-600 text-white font-semibold"
               >
                 Get Involved Today
               </Button>
@@ -147,7 +150,7 @@ const Home: React.FC = () => {
                 href="/programs"
                 variant="outline"
                 size="lg"
-                className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-semibold"
+                className="border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white font-semibold"
               >
                 Explore Our Programs
               </Button>
@@ -160,13 +163,13 @@ const Home: React.FC = () => {
       <Section className="py-16 sm:py-20 bg-gray-50">
         <Container>
           <div className="text-center mb-12 sm:mb-16">
-            <div className="text-blue-600 text-sm font-semibold uppercase tracking-wide mb-4">
+            <div className="text-primary-600 text-sm font-semibold uppercase tracking-wide mb-4">
               JOIN OUR COMMUNITY
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
               Kidney Forward Programs
             </h2>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto">
               Our comprehensive programs support patients, donors, and families
               throughout the kidney transplant journey.
             </p>
@@ -178,7 +181,7 @@ const Home: React.FC = () => {
               boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
             }}>
               <div className="aspect-square overflow-hidden">
-                <img
+                <LazyImage
                   src={getAssetPath("/images/olderwoman.webp")}
                   alt="Nurse helping patient"
                   className="w-full h-full object-cover"
@@ -188,7 +191,7 @@ const Home: React.FC = () => {
                 <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">
                   For Patients
                 </h3>
-                <p className="text-gray-600 mb-6 flex-1 text-sm sm:text-base">
+                <p className="text-slate-600 mb-6 flex-1 text-sm sm:text-base">
                   Living with kidney disease is difficult. Our programs provide
                   community and support and enable patients to find living
                   donors. Asking for help brings about complex emotions such as
@@ -210,7 +213,7 @@ const Home: React.FC = () => {
               boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
             }}>
               <div className="aspect-square overflow-hidden">
-                <img
+                <LazyImage
                   src={getAssetPath("/images/momdaughter.webp")}
                   alt="Mother and daughter"
                   className="w-full h-full object-cover"
@@ -220,7 +223,7 @@ const Home: React.FC = () => {
                 <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">
                   For Potential Donors
                 </h3>
-                <p className="text-gray-600 mb-6 flex-1 text-sm sm:text-base">
+                <p className="text-slate-600 mb-6 flex-1 text-sm sm:text-base">
                   Donating a kidney is one of the most noble acts one can do.
                   Our donor programs guide potential living donors through the
                   donation process. We make the process transparent and
@@ -241,7 +244,7 @@ const Home: React.FC = () => {
               boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
             }}>
               <div className="aspect-square overflow-hidden">
-                <img
+                <LazyImage
                   src={getAssetPath("/images/sponsors.webp")}
                   alt="Friends and family support"
                   className="w-full h-full object-cover"
@@ -251,7 +254,7 @@ const Home: React.FC = () => {
                 <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">
                   For Friends and Family
                 </h3>
-                <p className="text-gray-600 mb-6 flex-1 text-sm sm:text-base">
+                <p className="text-slate-600 mb-6 flex-1 text-sm sm:text-base">
                   Watching a loved one or a friend struggle through kidney
                   failure can feel overwhelming. Our Bobby Lynn Navigator
                   programs educates you on kidney health and ways you can
@@ -271,16 +274,129 @@ const Home: React.FC = () => {
         </Container>
       </Section>
 
+      {/* Medical Institutions Section */}
+      <Section className="py-16 sm:py-20 bg-gradient-to-br from-slate-50 to-primary-50">
+        <Container>
+          <div className="text-center mb-12 sm:mb-16">
+            <div className="text-secondary-600 text-sm font-semibold uppercase tracking-wide mb-4">
+              FOR HEALTHCARE PROVIDERS
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-4 sm:mb-6">
+              Partner with Kidney Forward
+            </h2>
+            <p className="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto">
+              Join a nationwide network of medical institutions working together to transform kidney transplant outcomes
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-12">
+            {/* Professional Resources */}
+            <div className="bg-white rounded-lg shadow-2xl p-6 sm:p-8 hover:scale-105 transition-all duration-300">
+              <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mb-6">
+                <svg className="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+              </div>
+              <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4">
+                Professional Resources
+              </h3>
+              <p className="text-slate-600 mb-6">
+                Access evidence-based protocols, patient education materials, and best practices for living donor programs.
+              </p>
+              <Button
+                href="/resources"
+                variant="outline"
+                className="w-full"
+              >
+                Access Resources
+              </Button>
+            </div>
+
+            {/* Data & Analytics */}
+            <div className="bg-white rounded-lg shadow-2xl p-6 sm:p-8 hover:scale-105 transition-all duration-300">
+              <div className="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mb-6">
+                <svg className="w-8 h-8 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+              </div>
+              <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4">
+                Impact Data
+              </h3>
+              <p className="text-slate-600 mb-6">
+                Track outcomes, measure program effectiveness, and access real-time data on donation impact.
+              </p>
+              <Button
+                href="/data"
+                variant="outline"
+                className="w-full"
+              >
+                View Analytics
+              </Button>
+            </div>
+
+            {/* Partnership Opportunities */}
+            <div className="bg-white rounded-lg shadow-2xl p-6 sm:p-8 hover:scale-105 transition-all duration-300">
+              <div className="w-16 h-16 bg-secondary-100 rounded-full flex items-center justify-center mb-6">
+                <svg className="w-8 h-8 text-secondary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </div>
+              <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4">
+                Partner Network
+              </h3>
+              <p className="text-slate-600 mb-6">
+                Collaborate with leading transplant centers and share best practices across institutions.
+              </p>
+              <Button
+                href="/partnership"
+                variant="outline"
+                className="w-full"
+              >
+                Join Network
+              </Button>
+            </div>
+          </div>
+
+          {/* CTA for Medical Institutions */}
+          <div className="bg-slate-800 rounded-2xl p-8 sm:p-12 text-center">
+            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">
+              Ready to Transform Transplant Care?
+            </h3>
+            <p className="text-lg text-gray-300 mb-6 max-w-2xl mx-auto">
+              Join over 200 medical institutions nationwide using Kidney Forward's programs to improve patient outcomes.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button
+                href="/partnership"
+                variant="primary"
+                size="lg"
+                className="bg-accent-400 hover:bg-accent-500"
+              >
+                Schedule a Demo
+              </Button>
+              <Button
+                href="/contact"
+                variant="outline"
+                size="lg"
+                className="border-white text-white hover:bg-white hover:text-slate-800"
+              >
+                Contact Our Team
+              </Button>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
       {/* Our Mission */}
       <section className="py-16 sm:py-20 bg-black">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl font-bold text-blue-300 text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-primary-300 text-center mb-12 sm:mb-16">
               OUR MISSION
             </h2>
             <div className="flex flex-col lg:flex-row items-center justify-center space-y-8 lg:space-y-0 lg:space-x-16">
               <div className="flex-shrink-0">
-                <img
+                <LazyImage
                   src={getAssetPath("/images/kidneyoutlined.webp")}
                   alt="Kidney Forward Mission"
                   className="w-32 h-32 sm:w-40 sm:h-40 object-contain"
@@ -297,6 +413,161 @@ const Home: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Patient Stories Section */}
+      <Section className="py-16 sm:py-20 bg-white">
+        <Container>
+          <div className="text-center mb-12 sm:mb-16">
+            <div className="text-accent-600 text-sm font-semibold uppercase tracking-wide mb-4">
+              STORIES OF HOPE
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-4 sm:mb-6">
+              Lives Transformed Through Living Donation
+            </h2>
+            <p className="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto">
+              Real stories from patients and donors who have experienced the life-changing impact of kidney donation
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {/* Story 1 */}
+            <div className="bg-gradient-to-br from-primary-50 to-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+              <div className="aspect-video bg-slate-200 relative overflow-hidden">
+                <LazyImage
+                  src={getAssetPath("/images/happymom.webp")}
+                  alt="Sarah's Story"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div className="absolute bottom-4 left-4 text-white">
+                  <p className="text-sm font-semibold">Recipient Story</p>
+                  <p className="text-xs opacity-90">2 years post-transplant</p>
+                </div>
+              </div>
+              <div className="p-6 sm:p-8">
+                <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-3">
+                  Sarah's Second Chance
+                </h3>
+                <p className="text-slate-600 mb-4">
+                  "After 4 years on dialysis, I had lost hope. Then my neighbor offered to be tested. Today, I'm watching my grandchildren grow up - something I never thought I'd see."
+                </p>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-accent-600 font-semibold">Wait time: 4 years</span>
+                  <Button
+                    href="/stories/sarah"
+                    variant="ghost"
+                    size="sm"
+                  >
+                    Read More →
+                  </Button>
+                </div>
+              </div>
+            </div>
+
+            {/* Story 2 */}
+            <div className="bg-gradient-to-br from-secondary-50 to-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+              <div className="aspect-video bg-slate-200 relative overflow-hidden">
+                <LazyImage
+                  src={getAssetPath("/images/momdaughter.webp")}
+                  alt="Maria and Ana's Story"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div className="absolute bottom-4 left-4 text-white">
+                  <p className="text-sm font-semibold">Donor & Recipient</p>
+                  <p className="text-xs opacity-90">Mother & Daughter</p>
+                </div>
+              </div>
+              <div className="p-6 sm:p-8">
+                <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-3">
+                  A Mother's Gift
+                </h3>
+                <p className="text-slate-600 mb-4">
+                  "When my daughter needed a kidney, there was no question. Seeing her healthy and thriving is worth everything. We both have our lives back."
+                </p>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-secondary-600 font-semibold">Living donor</span>
+                  <Button
+                    href="/stories/maria-ana"
+                    variant="ghost"
+                    size="sm"
+                  >
+                    Read More →
+                  </Button>
+                </div>
+              </div>
+            </div>
+
+            {/* Story 3 */}
+            <div className="bg-gradient-to-br from-accent-50 to-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+              <div className="aspect-video bg-slate-200 relative overflow-hidden">
+                <LazyImage
+                  src={getAssetPath("/images/womanlaugh.webp")}
+                  alt="James's Story"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div className="absolute bottom-4 left-4 text-white">
+                  <p className="text-sm font-semibold">Altruistic Donor</p>
+                  <p className="text-xs opacity-90">Saved 3 lives</p>
+                </div>
+              </div>
+              <div className="p-6 sm:p-8">
+                <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-3">
+                  The Chain of Life
+                </h3>
+                <p className="text-slate-600 mb-4">
+                  "I donated to a stranger and started a chain that saved 3 lives. Knowing I could help when someone needed it most is the greatest feeling."
+                </p>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-primary-600 font-semibold">Chain donation</span>
+                  <Button
+                    href="/stories/james"
+                    variant="ghost"
+                    size="sm"
+                  >
+                    Read More →
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Statistics Banner */}
+          <div ref={statisticsRef} className="mt-12 bg-gradient-to-r from-primary-600 to-secondary-600 rounded-2xl p-8 sm:p-12 text-white text-center">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div>
+                <p className="text-4xl sm:text-5xl font-bold mb-2">
+                  <span className="animate-number" data-target="90000">0</span>+
+                </p>
+                <p className="text-lg opacity-90">Patients Waiting</p>
+              </div>
+              <div>
+                <p className="text-4xl sm:text-5xl font-bold mb-2">
+                  <span className="animate-number" data-target="17">0</span>
+                </p>
+                <p className="text-lg opacity-90">Die Daily Waiting</p>
+              </div>
+              <div>
+                <p className="text-4xl sm:text-5xl font-bold mb-2">
+                  <span className="animate-number" data-target="1">0</span>
+                </p>
+                <p className="text-lg opacity-90">Donor Can Save a Life</p>
+              </div>
+            </div>
+            <div className="mt-8">
+              <Button
+                href="/stories"
+                variant="outline"
+                size="lg"
+                className="border-white text-white hover:bg-white hover:text-primary-600"
+              >
+                Read More Stories of Hope
+              </Button>
+            </div>
+          </div>
+        </Container>
+      </Section>
 
       {/* How You Can Help */}
       <section
@@ -508,6 +779,122 @@ const Home: React.FC = () => {
         </Container>
       </section>
 
+      {/* Impact Visualization Section */}
+      <Section className="py-16 sm:py-20 bg-gradient-to-b from-white to-gray-50">
+        <Container>
+          <div className="text-center mb-12 sm:mb-16">
+            <div className="text-primary-600 text-sm font-semibold uppercase tracking-wide mb-4">
+              OUR IMPACT
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-4 sm:mb-6">
+              Making a Difference Together
+            </h2>
+            <p className="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto">
+              Through our programs and partnerships, we're transforming the landscape of kidney donation
+            </p>
+          </div>
+
+          {/* Impact Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            {/* Living Donor Success Rate */}
+            <div className="bg-white rounded-2xl shadow-xl p-8">
+              <h3 className="text-2xl font-bold text-slate-900 mb-6">Living Donor Success Rate</h3>
+              <div className="relative h-64">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-center">
+                    <p className="text-6xl font-bold text-primary-600">95%</p>
+                    <p className="text-lg text-slate-600 mt-2">5-Year Survival Rate</p>
+                  </div>
+                </div>
+                <svg className="absolute inset-0 w-full h-full">
+                  <circle
+                    cx="50%"
+                    cy="50%"
+                    r="80"
+                    fill="none"
+                    stroke="#e5e7eb"
+                    strokeWidth="20"
+                  />
+                  <circle
+                    cx="50%"
+                    cy="50%"
+                    r="80"
+                    fill="none"
+                    stroke="#2480dd"
+                    strokeWidth="20"
+                    strokeDasharray={`${2 * Math.PI * 80 * 0.95} ${2 * Math.PI * 80}`}
+                    strokeLinecap="round"
+                    transform="rotate(-90 128 128)"
+                    className="transition-all duration-1000"
+                  />
+                </svg>
+              </div>
+              <p className="text-slate-600 mt-4">
+                Living donor kidney transplants have the highest success rates, giving recipients the best chance at a normal life.
+              </p>
+            </div>
+
+            {/* Wait Time Comparison */}
+            <div className="bg-white rounded-2xl shadow-xl p-8">
+              <h3 className="text-2xl font-bold text-slate-900 mb-6">Average Wait Time</h3>
+              <div className="space-y-6">
+                <div>
+                  <div className="flex justify-between mb-2">
+                    <span className="text-slate-700 font-medium">Deceased Donor</span>
+                    <span className="text-slate-900 font-bold">3-5 Years</span>
+                  </div>
+                  <div className="w-full bg-gray-200 rounded-full h-4">
+                    <div className="bg-red-500 h-4 rounded-full" style={{ width: '100%' }}></div>
+                  </div>
+                </div>
+                <div>
+                  <div className="flex justify-between mb-2">
+                    <span className="text-slate-700 font-medium">Living Donor</span>
+                    <span className="text-slate-900 font-bold">3-6 Months</span>
+                  </div>
+                  <div className="w-full bg-gray-200 rounded-full h-4">
+                    <div className="bg-accent-400 h-4 rounded-full" style={{ width: '10%' }}></div>
+                  </div>
+                </div>
+              </div>
+              <p className="text-slate-600 mt-6">
+                Living donation dramatically reduces wait times, getting patients back to their lives faster.
+              </p>
+            </div>
+          </div>
+
+          {/* Program Impact Numbers */}
+          <div className="bg-gradient-to-r from-primary-600 via-secondary-600 to-accent-500 rounded-2xl p-8 sm:p-12">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-white text-center">
+              <div>
+                <p className="text-4xl sm:text-5xl font-bold mb-2">
+                  <span className="animate-number" data-target="2500">0</span>+
+                </p>
+                <p className="text-lg opacity-90">Lives Saved</p>
+              </div>
+              <div>
+                <p className="text-4xl sm:text-5xl font-bold mb-2">
+                  <span className="animate-number" data-target="200">0</span>+
+                </p>
+                <p className="text-lg opacity-90">Partner Hospitals</p>
+              </div>
+              <div>
+                <p className="text-4xl sm:text-5xl font-bold mb-2">
+                  <span className="animate-number" data-target="15000">0</span>+
+                </p>
+                <p className="text-lg opacity-90">Donors Registered</p>
+              </div>
+              <div>
+                <p className="text-4xl sm:text-5xl font-bold mb-2">
+                  <span className="animate-number" data-target="50">0</span>
+                </p>
+                <p className="text-lg opacity-90">States Reached</p>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
       {/* Be A Hero Section */}
       <section
         className="py-16 sm:py-20 relative overflow-hidden"
@@ -567,6 +954,315 @@ const Home: React.FC = () => {
         </Container>
       </section>
 
+      {/* Community Support Resources */}
+      <Section className="py-16 sm:py-20 bg-white">
+        <Container>
+          <div className="text-center mb-12 sm:mb-16">
+            <div className="text-secondary-600 text-sm font-semibold uppercase tracking-wide mb-4">
+              SUPPORT & RESOURCES
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-4 sm:mb-6">
+              Community Support Network
+            </h2>
+            <p className="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto">
+              Access comprehensive support, resources, and connect with others on similar journeys
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Patient Support Groups */}
+            <div className="bg-gradient-to-br from-primary-50 to-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300">
+              <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mb-6">
+                <svg className="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-4">Patient Support Groups</h3>
+              <p className="text-slate-600 mb-6">
+                Connect with others facing similar challenges. Monthly virtual meetups and local chapter events.
+              </p>
+              <div className="space-y-2 mb-6">
+                <div className="flex items-center text-sm text-slate-600">
+                  <span className="w-2 h-2 bg-primary-400 rounded-full mr-2"></span>
+                  Weekly virtual support meetings
+                </div>
+                <div className="flex items-center text-sm text-slate-600">
+                  <span className="w-2 h-2 bg-primary-400 rounded-full mr-2"></span>
+                  Peer mentorship program
+                </div>
+                <div className="flex items-center text-sm text-slate-600">
+                  <span className="w-2 h-2 bg-primary-400 rounded-full mr-2"></span>
+                  Family support resources
+                </div>
+              </div>
+              <Button href="/support-groups" variant="outline" className="w-full">
+                Join Support Group
+              </Button>
+            </div>
+
+            {/* Educational Resources */}
+            <div className="bg-gradient-to-br from-accent-50 to-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300">
+              <div className="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mb-6">
+                <svg className="w-8 h-8 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-4">Educational Resources</h3>
+              <p className="text-slate-600 mb-6">
+                Comprehensive library of resources, guides, and educational materials for patients and families.
+              </p>
+              <div className="space-y-2 mb-6">
+                <div className="flex items-center text-sm text-slate-600">
+                  <span className="w-2 h-2 bg-accent-400 rounded-full mr-2"></span>
+                  Kidney disease guides
+                </div>
+                <div className="flex items-center text-sm text-slate-600">
+                  <span className="w-2 h-2 bg-accent-400 rounded-full mr-2"></span>
+                  Treatment option comparisons
+                </div>
+                <div className="flex items-center text-sm text-slate-600">
+                  <span className="w-2 h-2 bg-accent-400 rounded-full mr-2"></span>
+                  Donor search strategies
+                </div>
+              </div>
+              <Button href="/resources" variant="outline" className="w-full">
+                Access Resources
+              </Button>
+            </div>
+
+            {/* Financial Assistance */}
+            <div className="bg-gradient-to-br from-secondary-50 to-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300">
+              <div className="w-16 h-16 bg-secondary-100 rounded-full flex items-center justify-center mb-6">
+                <svg className="w-8 h-8 text-secondary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-4">Financial Assistance</h3>
+              <p className="text-slate-600 mb-6">
+                Help with medical expenses, transportation, and other costs associated with kidney disease and transplant.
+              </p>
+              <div className="space-y-2 mb-6">
+                <div className="flex items-center text-sm text-slate-600">
+                  <span className="w-2 h-2 bg-secondary-400 rounded-full mr-2"></span>
+                  Medical expense assistance
+                </div>
+                <div className="flex items-center text-sm text-slate-600">
+                  <span className="w-2 h-2 bg-secondary-400 rounded-full mr-2"></span>
+                  Transportation support
+                </div>
+                <div className="flex items-center text-sm text-slate-600">
+                  <span className="w-2 h-2 bg-secondary-400 rounded-full mr-2"></span>
+                  Emergency relief fund
+                </div>
+              </div>
+              <Button href="/financial-assistance" variant="outline" className="w-full">
+                Learn About Aid
+              </Button>
+            </div>
+          </div>
+
+          {/* Emergency Support Banner */}
+          <div className="mt-12 bg-gradient-to-r from-accent-600 to-primary-600 rounded-2xl p-8 sm:p-12 text-white text-center">
+            <h3 className="text-2xl sm:text-3xl font-bold mb-4">
+              Need Immediate Support?
+            </h3>
+            <p className="text-lg opacity-90 mb-6 max-w-2xl mx-auto">
+              Our 24/7 support line is available for urgent questions and crisis support for patients and families.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button
+                href="tel:1-800-KIDNEY-HELP"
+                variant="outline"
+                size="lg"
+                className="border-white text-white hover:bg-white hover:text-accent-600"
+              >
+                📞 Call Support Line
+              </Button>
+              <Button
+                href="/live-chat"
+                variant="outline"
+                size="lg"
+                className="border-white text-white hover:bg-white hover:text-accent-600"
+              >
+                💬 Live Chat Support
+              </Button>
+            </div>
+          </div>
+
+          {/* Community Stats */}
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+            <div>
+              <p className="text-3xl font-bold text-primary-600">15,000+</p>
+              <p className="text-slate-600">Community Members</p>
+            </div>
+            <div>
+              <p className="text-3xl font-bold text-secondary-600">500+</p>
+              <p className="text-slate-600">Support Groups</p>
+            </div>
+            <div>
+              <p className="text-3xl font-bold text-accent-500">24/7</p>
+              <p className="text-slate-600">Support Available</p>
+            </div>
+            <div>
+              <p className="text-3xl font-bold text-primary-600">$2M+</p>
+              <p className="text-slate-600">Financial Aid Provided</p>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Community & Support Resources Section */}
+      <Section className="py-16 sm:py-20 bg-white">
+        <Container>
+          <div className="text-center mb-12 sm:mb-16">
+            <div className="text-secondary-600 text-sm font-semibold uppercase tracking-wide mb-4">
+              COMMUNITY SUPPORT
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-4 sm:mb-6">
+              You're Not Alone in This Journey
+            </h2>
+            <p className="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto">
+              Connect with others, access resources, and find the support you need every step of the way
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            {/* Support Groups */}
+            <div className="bg-gradient-to-br from-primary-50 to-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300">
+              <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mb-6">
+                <svg className="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-4">
+                Support Groups
+              </h3>
+              <p className="text-slate-600 mb-6">
+                Join virtual and in-person support groups with patients, donors, and families who understand your experience.
+              </p>
+              <Button
+                href="/support-groups"
+                variant="outline"
+                className="w-full"
+              >
+                Find a Group
+              </Button>
+            </div>
+
+            {/* Educational Resources */}
+            <div className="bg-gradient-to-br from-accent-50 to-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300">
+              <div className="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mb-6">
+                <svg className="w-8 h-8 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-4">
+                Educational Library
+              </h3>
+              <p className="text-slate-600 mb-6">
+                Access comprehensive guides, videos, and articles about kidney disease, donation, and transplant care.
+              </p>
+              <Button
+                href="/resources"
+                variant="outline"
+                className="w-full"
+              >
+                Browse Resources
+              </Button>
+            </div>
+
+            {/* 24/7 Helpline */}
+            <div className="bg-gradient-to-br from-secondary-50 to-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300">
+              <div className="w-16 h-16 bg-secondary-100 rounded-full flex items-center justify-center mb-6">
+                <svg className="w-8 h-8 text-secondary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-4">
+                24/7 Support Helpline
+              </h3>
+              <p className="text-slate-600 mb-6">
+                Speak with trained counselors and navigate coordinators whenever you need guidance or emotional support.
+              </p>
+              <Button
+                href="tel:1-800-KIDNEY-1"
+                variant="outline"
+                className="w-full"
+              >
+                Call Now
+              </Button>
+            </div>
+          </div>
+
+          {/* Quick Access Resources */}
+          <div className="bg-gradient-to-r from-slate-800 to-slate-900 rounded-2xl p-8 sm:p-12">
+            <div className="text-center mb-8">
+              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">
+                Quick Access Resources
+              </h3>
+              <p className="text-lg text-gray-300">
+                Essential resources for patients and families
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="text-center">
+                <div className="w-12 h-12 bg-primary-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                </div>
+                <h4 className="text-white font-semibold mb-2">Patient Guide</h4>
+                <p className="text-gray-400 text-sm mb-3">Complete guide to living with kidney disease</p>
+                <Button variant="outline" size="sm" className="border-white text-white hover:bg-white hover:text-slate-800">
+                  Download PDF
+                </Button>
+              </div>
+
+              <div className="text-center">
+                <div className="w-12 h-12 bg-accent-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <h4 className="text-white font-semibold mb-2">FAQ</h4>
+                <p className="text-gray-400 text-sm mb-3">Answers to common questions</p>
+                <Button variant="outline" size="sm" className="border-white text-white hover:bg-white hover:text-slate-800">
+                  View FAQ
+                </Button>
+              </div>
+
+              <div className="text-center">
+                <div className="w-12 h-12 bg-secondary-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+                <h4 className="text-white font-semibold mb-2">Find Centers</h4>
+                <p className="text-gray-400 text-sm mb-3">Locate nearby transplant centers</p>
+                <Button variant="outline" size="sm" className="border-white text-white hover:bg-white hover:text-slate-800">
+                  Search Centers
+                </Button>
+              </div>
+
+              <div className="text-center">
+                <div className="w-12 h-12 bg-primary-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+                  </svg>
+                </div>
+                <h4 className="text-white font-semibold mb-2">Financial Aid</h4>
+                <p className="text-gray-400 text-sm mb-3">Financial assistance programs</p>
+                <Button variant="outline" size="sm" className="border-white text-white hover:bg-white hover:text-slate-800">
+                  Learn More
+                </Button>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
       {/* CTA Section */}
       <Section className="py-16 sm:py-20 bg-gray-50">
         <Container>
@@ -574,7 +1270,7 @@ const Home: React.FC = () => {
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">
               Join our community
             </h2>
-            <p className="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-8 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-slate-600 mb-6 sm:mb-8 max-w-2xl mx-auto">
               We would love for you to join us in this journey. Please sign up
               for updates!
             </p>

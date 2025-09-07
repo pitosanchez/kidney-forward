@@ -1,21 +1,39 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Button from "./ui/Button";
 import { getAssetPath } from "../utils/assetPath";
 
-const Hero: React.FC = () => {
+const OptimizedHero: React.FC = () => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const heroImage = getAssetPath("/images/desktop-tree.webp");
+
+  useEffect(() => {
+    // Preload hero image
+    const img = new Image();
+    img.src = heroImage;
+    img.onload = () => setImageLoaded(true);
+  }, [heroImage]);
+
   return (
-    <section
-      className="relative min-h-screen bg-cover bg-center bg-no-repeat"
-      style={{
-        backgroundImage: `url(${getAssetPath("/images/desktop-tree.webp")})`,
-      }}
-    >
-      {/* Simple overlay */}
-      <div className="absolute inset-0 bg-black/30"></div>
+    <section className="relative min-h-screen bg-slate-900">
+      {/* Placeholder gradient while image loads */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary-900 to-secondary-900"></div>
+      
+      {/* Hero image with fade-in effect */}
+      <div 
+        className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ${
+          imageLoaded ? 'opacity-100' : 'opacity-0'
+        }`}
+        style={{
+          backgroundImage: `url(${heroImage})`,
+        }}
+      >
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/30"></div>
+      </div>
 
       {/* Content Container */}
       <div className="relative z-10 flex items-center min-h-screen px-8 lg:px-16">
-        <div className="max-w-2xl text-white">
+        <div className="max-w-2xl text-white animate-fade-in">
           {/* Main Heading */}
           <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6">
             Save a Life
@@ -23,6 +41,7 @@ const Hero: React.FC = () => {
               src={getAssetPath("/images/logo2.png")}
               alt="Kidney Forward Logo"
               className="inline-block h-12 md:h-16 ml-4 align-middle"
+              loading="eager"
             />
           </h1>
 
@@ -54,4 +73,4 @@ const Hero: React.FC = () => {
   );
 };
 
-export default Hero;
+export default OptimizedHero;

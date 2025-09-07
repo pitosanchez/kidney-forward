@@ -307,6 +307,178 @@ const Patients: React.FC = () => {
           )}
         </Container>
       </Section>
+
+      {/* Donation Process Timeline */}
+      <Section className="py-16 sm:py-20 bg-white">
+        <Container>
+          <div className="text-center mb-12 sm:mb-16">
+            <div className="text-primary-600 text-sm font-semibold uppercase tracking-wide mb-4">
+              THE JOURNEY
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-4 sm:mb-6">
+              Living Donation Process Timeline
+            </h2>
+            <p className="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto">
+              Understanding each step of the journey from evaluation to recovery
+            </p>
+          </div>
+
+          <div className="max-w-5xl mx-auto">
+            {/* Timeline */}
+            <div className="relative">
+              {/* Vertical Line */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-primary-300 via-secondary-300 to-accent-300"></div>
+              
+              {/* Timeline Items */}
+              <div className="space-y-16">
+                {/* Step 1 - Initial Contact */}
+                <div className="relative flex items-center">
+                  <div className="w-full md:w-1/2 md:pr-12 text-right">
+                    <div className="bg-white p-6 rounded-xl shadow-lg border-2 border-primary-200">
+                      <h3 className="text-xl font-bold text-slate-900 mb-2">Initial Contact & Interest</h3>
+                      <p className="text-slate-600 mb-2">Potential donor expresses interest and receives initial information</p>
+                      <div className="text-primary-600 font-semibold">Day 1</div>
+                    </div>
+                  </div>
+                  <div className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-primary-600 rounded-full border-4 border-white shadow-lg flex items-center justify-center">
+                    <span className="text-white font-bold text-sm">1</span>
+                  </div>
+                  <div className="hidden md:block w-1/2 pl-12"></div>
+                </div>
+
+                {/* Step 2 - Health Screening */}
+                <div className="relative flex items-center">
+                  <div className="hidden md:block w-1/2 pr-12"></div>
+                  <div className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-secondary-600 rounded-full border-4 border-white shadow-lg flex items-center justify-center">
+                    <span className="text-white font-bold text-sm">2</span>
+                  </div>
+                  <div className="w-full md:w-1/2 md:pl-12">
+                    <div className="bg-white p-6 rounded-xl shadow-lg border-2 border-secondary-200">
+                      <h3 className="text-xl font-bold text-slate-900 mb-2">Health Screening</h3>
+                      <p className="text-slate-600 mb-2">Comprehensive medical evaluation and compatibility testing</p>
+                      <div className="text-secondary-600 font-semibold">Weeks 1-4</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Step 3 - Evaluation */}
+                <div className="relative flex items-center">
+                  <div className="w-full md:w-1/2 md:pr-12 text-right">
+                    <div className="bg-white p-6 rounded-xl shadow-lg border-2 border-accent-200">
+                      <h3 className="text-xl font-bold text-slate-900 mb-2">Comprehensive Evaluation</h3>
+                      <p className="text-slate-600 mb-2">Psychological assessment, financial counseling, and final medical tests</p>
+                      <div className="text-accent-600 font-semibold">Weeks 4-8</div>
+                    </div>
+                  </div>
+                  <div className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-accent-500 rounded-full border-4 border-white shadow-lg flex items-center justify-center">
+                    <span className="text-white font-bold text-sm">3</span>
+                  </div>
+                  <div className="hidden md:block w-1/2 pl-12"></div>
+                </div>
+
+                {/* Step 4 - Approval */}
+                <div className="relative flex items-center">
+                  <div className="hidden md:block w-1/2 pr-12"></div>
+                  <div className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-primary-600 rounded-full border-4 border-white shadow-lg flex items-center justify-center">
+                    <span className="text-white font-bold text-sm">4</span>
+                  </div>
+                  <div className="w-full md:w-1/2 md:pl-12">
+                    <div className="bg-white p-6 rounded-xl shadow-lg border-2 border-primary-200">
+                      <h3 className="text-xl font-bold text-slate-900 mb-2">Approval & Scheduling</h3>
+                      <p className="text-slate-600 mb-2">Medical team approval and surgery scheduling</p>
+                      <div className="text-primary-600 font-semibold">Week 8-10</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Step 5 - Surgery */}
+                <div className="relative flex items-center">
+                  <div className="w-full md:w-1/2 md:pr-12 text-right">
+                    <div className="bg-white p-6 rounded-xl shadow-lg border-2 border-secondary-200">
+                      <h3 className="text-xl font-bold text-slate-900 mb-2">Transplant Surgery</h3>
+                      <p className="text-slate-600 mb-2">Minimally invasive laparoscopic procedure</p>
+                      <div className="text-secondary-600 font-semibold">Surgery Day</div>
+                    </div>
+                  </div>
+                  <div className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-secondary-600 rounded-full border-4 border-white shadow-lg flex items-center justify-center">
+                    <span className="text-white font-bold text-sm">5</span>
+                  </div>
+                  <div className="hidden md:block w-1/2 pl-12"></div>
+                </div>
+
+                {/* Step 6 - Recovery */}
+                <div className="relative flex items-center">
+                  <div className="hidden md:block w-1/2 pr-12"></div>
+                  <div className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-accent-500 rounded-full border-4 border-white shadow-lg flex items-center justify-center">
+                    <span className="text-white font-bold text-sm">6</span>
+                  </div>
+                  <div className="w-full md:w-1/2 md:pl-12">
+                    <div className="bg-white p-6 rounded-xl shadow-lg border-2 border-accent-200">
+                      <h3 className="text-xl font-bold text-slate-900 mb-2">Recovery & Follow-up</h3>
+                      <p className="text-slate-600 mb-2">Hospital stay 2-3 days, full recovery 4-6 weeks</p>
+                      <div className="text-accent-600 font-semibold">6-8 Weeks</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Mobile Timeline (simplified for small screens) */}
+            <div className="md:hidden mt-12">
+              <div className="bg-gradient-to-r from-primary-100 to-secondary-100 rounded-xl p-6">
+                <h3 className="text-lg font-bold text-slate-900 mb-4">Quick Timeline Overview</h3>
+                <div className="space-y-3">
+                  <div className="flex items-center">
+                    <div className="w-4 h-4 bg-primary-600 rounded-full mr-3"></div>
+                    <span className="text-sm">Initial Contact - Day 1</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-4 h-4 bg-secondary-600 rounded-full mr-3"></div>
+                    <span className="text-sm">Health Screening - Weeks 1-4</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-4 h-4 bg-accent-500 rounded-full mr-3"></div>
+                    <span className="text-sm">Evaluation - Weeks 4-8</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-4 h-4 bg-primary-600 rounded-full mr-3"></div>
+                    <span className="text-sm">Approval - Weeks 8-10</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-4 h-4 bg-secondary-600 rounded-full mr-3"></div>
+                    <span className="text-sm">Surgery - Scheduled Date</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-4 h-4 bg-accent-500 rounded-full mr-3"></div>
+                    <span className="text-sm">Recovery - 6-8 Weeks</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* CTA */}
+            <div className="text-center mt-12">
+              <p className="text-slate-600 mb-6">Ready to start your journey or learn more?</p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button
+                  href="/get-involved"
+                  variant="primary"
+                  size="lg"
+                >
+                  Start Your Journey
+                </Button>
+                <Button
+                  href="/resources"
+                  variant="outline"
+                  size="lg"
+                >
+                  Download Timeline PDF
+                </Button>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </Section>
     </div>
   );
 };
