@@ -13,7 +13,6 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.57.0",
     "@stripe/stripe-js": "^7.9.0",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "better-sqlite3": "^12.2.0",

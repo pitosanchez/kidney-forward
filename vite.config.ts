@@ -19,7 +19,6 @@ export default defineConfig({
             if (id.includes("react")) return "react-vendor";
             if (id.includes("gsap")) return "animations";
             if (id.includes("lucide-react")) return "ui-icons";
-            if (id.includes("@anthropic")) return "anthropic";
             // Group remaining vendor code
             return "vendor";
           }
@@ -72,7 +71,6 @@ export default defineConfig({
   // Enhanced dependency optimization
   optimizeDeps: {
     include: ["react", "react-dom", "react-router-dom", "gsap", "lucide-react"],
-    exclude: ["@anthropic-ai/sdk"],
     esbuildOptions: {
       target: "es2020",
     },

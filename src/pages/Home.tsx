@@ -11,57 +11,16 @@ const Home: React.FC = () => {
   const statisticsRef = useRef<HTMLDivElement>(null);
   usePerformanceOptimization();
 
-  const animateNumber = (
-    element: HTMLElement,
-    target: number,
-    duration: number = 2000
-  ) => {
-    let start = 0;
-    const increment = target / (duration / 16);
-    
-    const timer = setInterval(() => {
-      start += increment;
-      if (start >= target) {
-        element.textContent = target.toString();
-        clearInterval(timer);
-      } else {
-        element.textContent = Math.floor(start).toString();
-      }
-    }, 16);
-  };
 
   useEffect(() => {
     // Set header transparent for hero section
     setIsTransparent(true);
 
-    // Set up intersection observer for statistics animation
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const animatedNumbers = entry.target.querySelectorAll('.animate-number');
-            animatedNumbers.forEach((numberElement) => {
-              const target = parseInt(numberElement.getAttribute('data-target') || '0');
-              animateNumber(numberElement as HTMLElement, target);
-            });
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold: 0.5,
-        rootMargin: '0px 0px -100px 0px'
-      }
-    );
-
-    if (statisticsRef.current) {
-      observer.observe(statisticsRef.current);
-    }
+    // Statistics animation is handled by initNumberAnimation in App.tsx
 
     // Cleanup function to reset header when component unmounts
     return () => {
       setIsTransparent(false);
-      observer.disconnect();
     };
   }, [setIsTransparent]);
 

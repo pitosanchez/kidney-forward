@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useHeader } from "../contexts/HeaderContext";
-import { Button, Section, Container, Hero } from "../components/ui";
+import { Button, Section, Container } from "../components/ui";
 import TeamCard3D from "../components/TeamCard3D";
 import { getAssetPath } from "../utils/assetPath";
 
@@ -15,14 +15,11 @@ const About: React.FC = () => {
   return (
     <div>
       {/* Hero Section */}
-      <Hero
-        title=""
-        subtitle=""
-        description=""
-        backgroundImage={getAssetPath("/images/happymom.webp")}
-        backgroundVariant="image"
-        overlay={false}
-        className="min-h-[60vh] md:min-h-[70vh] lg:min-h-[80vh] flex items-center"
+      <section 
+        className="relative min-h-[60vh] md:min-h-[70vh] lg:min-h-[80vh] flex items-center bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url(${getAssetPath("/images/happymom.webp")})`,
+        }}
       >
         <div className="w-full max-w-7xl mx-auto px-8 md:px-16 lg:px-24">
           <div className="text-left">
@@ -34,7 +31,7 @@ const About: React.FC = () => {
             </p>
           </div>
         </div>
-      </Hero>
+      </section>
       {/* How Kidney Forward Started Section */}
       <Section
         title="How Kidney Forward Started"

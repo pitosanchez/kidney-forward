@@ -78,16 +78,49 @@ const DonorRegister: React.FC = () => {
       {/* Form Card */}
       <section className="py-10 bg-white">
         <div className="max-w-5xl mx-auto px-4">
-          {successId ? (
-            <div className="bg-green-50 border border-green-200 text-green-800 p-6 rounded-xl text-center">
-              <h2 className="text-2xl font-bold mb-2">
-                Thank you for registering!
-              </h2>
-              <p>
-                Your registration ID is #{successId}. Our team will contact you
-                soon.
-              </p>
-            </div>
+            {successId ? (
+              <div className="bg-green-50 border border-green-200 text-green-900 p-8 rounded-xl text-center">
+                <div className="text-6xl mb-4">🫶</div>
+                <h2 className="text-2xl font-bold mb-4">
+                  Thank you for considering saving a life
+                </h2>
+                <p className="text-lg mb-4">
+                  Your decision to explore living donation represents the very best of humanity. 
+                  You are brave, generous, and compassionate.
+                </p>
+                <p className="text-base mb-4">
+                  A Kidney Forward team member will contact you within 48 hours to discuss 
+                  the next steps and answer any questions you may have.
+                </p>
+                <div className="bg-white rounded-lg p-4 border border-green-200 mb-4">
+                  <p className="text-sm text-gray-600">
+                    <strong>Your Registration ID:</strong> #{successId}
+                  </p>
+                  {form.email && (
+                    <p className="text-sm text-gray-600 mt-1">
+                      <strong>Confirmation email sent to:</strong> {form.email}
+                    </p>
+                  )}
+                </div>
+                <p className="text-sm text-gray-600 mb-6">
+                  In the meantime, feel free to explore our educational resources or 
+                  share this opportunity with friends and family.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                  <button
+                    onClick={() => setSuccessId(null)}
+                    className="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+                  >
+                    Register Another Person
+                  </button>
+                  <a
+                    href="/donors"
+                    className="px-6 py-2 bg-white border border-green-600 text-green-600 rounded-lg hover:bg-green-50 transition-colors"
+                  >
+                    Learn More About Donation
+                  </a>
+                </div>
+              </div>
           ) : (
             <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-6 sm:p-8">
               {/* Progress */}
