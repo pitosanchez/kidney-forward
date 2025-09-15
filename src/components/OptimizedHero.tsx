@@ -14,21 +14,21 @@ const OptimizedHero: React.FC = () => {
   }, [heroImage]);
 
   return (
-    <section className="relative min-h-screen bg-slate-900">
+    <section className="relative min-h-screen bg-slate-700">
       {/* Placeholder gradient while image loads */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary-900 to-secondary-900"></div>
-      
+      <div className="absolute inset-0 bg-gradient-to-br from-primary-700 to-secondary-700"></div>
+
       {/* Hero image with fade-in effect */}
-      <div 
+      <div
         className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ${
-          imageLoaded ? 'opacity-100' : 'opacity-0'
+          imageLoaded ? "opacity-100" : "opacity-0"
         }`}
         style={{
           backgroundImage: `url(${heroImage})`,
         }}
       >
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black/30"></div>
+        <div className="absolute inset-0 bg-black/5"></div>
       </div>
 
       {/* Content Container */}
@@ -52,18 +52,10 @@ const OptimizedHero: React.FC = () => {
 
           {/* Call to Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4">
-            <Button
-              href="/programs"
-              variant="primary"
-              size="lg"
-            >
+            <Button href="/programs" variant="primary" size="lg">
               Explore Programs
             </Button>
-            <Button
-              href="/get-involved"
-              variant="primary"
-              size="lg"
-            >
+            <Button href="/get-involved" variant="primary" size="lg">
               Get Involved
             </Button>
           </div>
