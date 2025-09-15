@@ -1,20 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useHeader } from "../contexts/HeaderContext";
-import { loadStripe } from "@stripe/stripe-js";
 import { getAssetPath } from "../utils/assetPath";
-
-// Initialize Stripe (use test publishable key)
-const stripePromise = loadStripe(
-  process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY || 
-  "pk_test_51234567890"
-);
 
 const Contribute: React.FC = () => {
   const { setIsTransparent } = useHeader();
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
-  
+
   const [form, setForm] = useState({
     donor_name: "",
     donor_email: "",
@@ -38,7 +31,7 @@ const Contribute: React.FC = () => {
   }, [setIsTransparent]);
 
   const update = (field: string, value: any) => {
-    setForm(prev => ({ ...prev, [field]: value }));
+    setForm((prev) => ({ ...prev, [field]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -49,7 +42,7 @@ const Contribute: React.FC = () => {
     try {
       // In production, you'd use Stripe Elements for secure card collection
       // For now, we'll simulate the payment flow
-      
+
       // Create payment intent
       const intentRes = await fetch("/api/create-payment-intent", {
         method: "POST",
@@ -62,7 +55,7 @@ const Contribute: React.FC = () => {
       });
 
       if (!intentRes.ok) throw new Error("Payment failed");
-      
+
       const { paymentId } = await intentRes.json();
 
       // Record donation
@@ -119,7 +112,8 @@ const Contribute: React.FC = () => {
               Support Our Mission
             </h2>
             <p className="text-lg text-center opacity-90 mb-8">
-              Your donation helps connect kidney donors with patients in need and saves lives.
+              Your donation helps connect kidney donors with patients in need
+              and saves lives.
             </p>
             <div className="space-y-4 w-full max-w-sm">
               <div className="flex items-center">
@@ -165,7 +159,9 @@ const Contribute: React.FC = () => {
               <div className="bg-green-50 border border-green-200 text-green-800 p-6 rounded-xl text-center">
                 <h3 className="text-xl font-bold mb-2">Thank You!</h3>
                 <p>Your donation has been processed successfully.</p>
-                <p className="mt-2">You'll receive a receipt at {form.donor_email}</p>
+                <p className="mt-2">
+                  You'll receive a receipt at {form.donor_email}
+                </p>
                 <button
                   onClick={() => setSuccess(false)}
                   className="mt-4 px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
@@ -191,10 +187,16 @@ const Contribute: React.FC = () => {
                       type="text"
                       required
                       className="w-full border rounded-lg px-3 py-2"
-                      value={form.donor_name.split(' ')[0] || ''}
+                      value={form.donor_name.split(" ")[0] || ""}
                       onChange={(e) => {
-                        const last = form.donor_name.split(' ').slice(1).join(' ');
-                        update('donor_name', `${e.target.value} ${last}`.trim());
+                        const last = form.donor_name
+                          .split(" ")
+                          .slice(1)
+                          .join(" ");
+                        update(
+                          "donor_name",
+                          `${e.target.value} ${last}`.trim()
+                        );
                       }}
                       placeholder="First Name"
                     />
@@ -207,10 +209,15 @@ const Contribute: React.FC = () => {
                       type="text"
                       required
                       className="w-full border rounded-lg px-3 py-2"
-                      value={form.donor_name.split(' ').slice(1).join(' ') || ''}
+                      value={
+                        form.donor_name.split(" ").slice(1).join(" ") || ""
+                      }
                       onChange={(e) => {
-                        const first = form.donor_name.split(' ')[0] || '';
-                        update('donor_name', `${first} ${e.target.value}`.trim());
+                        const first = form.donor_name.split(" ")[0] || "";
+                        update(
+                          "donor_name",
+                          `${first} ${e.target.value}`.trim()
+                        );
                       }}
                       placeholder="Last Name"
                     />
@@ -227,7 +234,7 @@ const Contribute: React.FC = () => {
                     required
                     className="w-full border rounded-lg px-3 py-2"
                     value={form.donor_email}
-                    onChange={(e) => update('donor_email', e.target.value)}
+                    onChange={(e) => update("donor_email", e.target.value)}
                     placeholder="email@example.com"
                   />
                 </div>
@@ -240,7 +247,7 @@ const Contribute: React.FC = () => {
                     type="tel"
                     className="w-full border rounded-lg px-3 py-2"
                     value={form.donor_phone}
-                    onChange={(e) => update('donor_phone', e.target.value)}
+                    onChange={(e) => update("donor_phone", e.target.value)}
                     placeholder="800-555-1234"
                   />
                 </div>
@@ -255,7 +262,7 @@ const Contribute: React.FC = () => {
                     required
                     className="w-full border rounded-lg px-3 py-2"
                     value={form.billing_address}
-                    onChange={(e) => update('billing_address', e.target.value)}
+                    onChange={(e) => update("billing_address", e.target.value)}
                     placeholder="12345 Main Street"
                   />
                 </div>
@@ -270,7 +277,7 @@ const Contribute: React.FC = () => {
                       required
                       className="w-full border rounded-lg px-3 py-2"
                       value={form.billing_city}
-                      onChange={(e) => update('billing_city', e.target.value)}
+                      onChange={(e) => update("billing_city", e.target.value)}
                       placeholder="City Name"
                     />
                   </div>
@@ -282,7 +289,7 @@ const Contribute: React.FC = () => {
                       required
                       className="w-full border rounded-lg px-3 py-2"
                       value={form.billing_state}
-                      onChange={(e) => update('billing_state', e.target.value)}
+                      onChange={(e) => update("billing_state", e.target.value)}
                     >
                       <option value="">Select State</option>
                       <option value="CA">California</option>
@@ -304,7 +311,7 @@ const Contribute: React.FC = () => {
                       required
                       className="w-full border rounded-lg px-3 py-2"
                       value={form.billing_zip}
-                      onChange={(e) => update('billing_zip', e.target.value)}
+                      onChange={(e) => update("billing_zip", e.target.value)}
                       placeholder="12345"
                     />
                   </div>
@@ -316,7 +323,9 @@ const Contribute: React.FC = () => {
                       required
                       className="w-full border rounded-lg px-3 py-2"
                       value={form.billing_country}
-                      onChange={(e) => update('billing_country', e.target.value)}
+                      onChange={(e) =>
+                        update("billing_country", e.target.value)
+                      }
                     >
                       <option value="United States">United States</option>
                       <option value="Canada">Canada</option>
@@ -334,11 +343,11 @@ const Contribute: React.FC = () => {
                       <button
                         key={amt}
                         type="button"
-                        onClick={() => update('amount', amt)}
+                        onClick={() => update("amount", amt)}
                         className={`py-2 rounded-lg border font-medium transition-colors ${
                           form.amount === amt
-                            ? 'bg-blue-600 text-white border-blue-600'
-                            : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
+                            ? "bg-blue-600 text-white border-blue-600"
+                            : "bg-white text-gray-700 border-gray-300 hover:bg-gray-50"
                         }`}
                       >
                         ${amt}
@@ -353,12 +362,12 @@ const Contribute: React.FC = () => {
                       required
                       className="flex-1 border rounded-lg px-3 py-2"
                       value={form.amount}
-                      onChange={(e) => update('amount', Number(e.target.value))}
+                      onChange={(e) => update("amount", Number(e.target.value))}
                     />
                     <select
                       className="ml-2 border rounded-lg px-3 py-2"
                       value={form.frequency}
-                      onChange={(e) => update('frequency', e.target.value)}
+                      onChange={(e) => update("frequency", e.target.value)}
                     >
                       <option value="one-time">One Time</option>
                       <option value="monthly">Monthly</option>
@@ -373,7 +382,7 @@ const Contribute: React.FC = () => {
                   <p className="text-sm text-gray-600 mb-4">
                     💳 Payment processing secured by Stripe
                   </p>
-                  
+
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       Card Number *
@@ -384,7 +393,7 @@ const Contribute: React.FC = () => {
                       className="w-full border rounded-lg px-3 py-2"
                       placeholder="4000 0000 0000 0002"
                       value={form.card_number}
-                      onChange={(e) => update('card_number', e.target.value)}
+                      onChange={(e) => update("card_number", e.target.value)}
                     />
                   </div>
 
@@ -397,12 +406,15 @@ const Contribute: React.FC = () => {
                         required
                         className="w-full border rounded-lg px-3 py-2"
                         value={form.exp_month}
-                        onChange={(e) => update('exp_month', e.target.value)}
+                        onChange={(e) => update("exp_month", e.target.value)}
                       >
                         <option value="">MM</option>
                         {[...Array(12)].map((_, i) => (
-                          <option key={i} value={String(i + 1).padStart(2, '0')}>
-                            {String(i + 1).padStart(2, '0')}
+                          <option
+                            key={i}
+                            value={String(i + 1).padStart(2, "0")}
+                          >
+                            {String(i + 1).padStart(2, "0")}
                           </option>
                         ))}
                       </select>
@@ -415,7 +427,7 @@ const Contribute: React.FC = () => {
                         required
                         className="w-full border rounded-lg px-3 py-2"
                         value={form.exp_year}
-                        onChange={(e) => update('exp_year', e.target.value)}
+                        onChange={(e) => update("exp_year", e.target.value)}
                       >
                         <option value="">YYYY</option>
                         {[...Array(10)].map((_, i) => {
@@ -439,7 +451,7 @@ const Contribute: React.FC = () => {
                         className="w-full border rounded-lg px-3 py-2"
                         placeholder="123"
                         value={form.cvv}
-                        onChange={(e) => update('cvv', e.target.value)}
+                        onChange={(e) => update("cvv", e.target.value)}
                       />
                     </div>
                   </div>
@@ -451,11 +463,12 @@ const Contribute: React.FC = () => {
                   disabled={loading}
                   className="w-full py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-blue-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
                 >
-                  {loading ? 'Processing...' : `Donate $${form.amount}`}
+                  {loading ? "Processing..." : `Donate $${form.amount}`}
                 </button>
 
                 <p className="text-xs text-gray-500 text-center">
-                  Your donation is tax-deductible. You'll receive a receipt via email.
+                  Your donation is tax-deductible. You'll receive a receipt via
+                  email.
                 </p>
               </form>
             )}
