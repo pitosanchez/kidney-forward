@@ -1,5 +1,5 @@
 import { useEffect, lazy, Suspense } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ErrorBoundary from "./components/ErrorBoundary";
@@ -20,6 +20,8 @@ const RobertSanchez = lazy(() => import("./pages/RobertSanchez"));
 const Partnership = lazy(() => import("./pages/Partnership"));
 const DonorRegister = lazy(() => import("./pages/DonorRegister"));
 const Admin = lazy(() => import("./pages/Admin"));
+const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
+const Contribute = lazy(() => import("./pages/Contribute"));
 
 // Story pages
 const SarahStory = lazy(() => import("./pages/stories/Sarah"));
@@ -48,8 +50,15 @@ function App() {
                 <Route path="/patients" element={<Patients />} />
                 <Route path="/get-involved" element={<GetInvolved />} />
                 <Route path="/programs" element={<Programs />} />
+                <Route path="/contribute" element={<Contribute />} />
+                {/* Legacy path redirect */}
+                <Route
+                  path="/become-donor"
+                  element={<Navigate to="/donors/register" replace />}
+                />
                 <Route path="/donors/register" element={<DonorRegister />} />
                 <Route path="/admin" element={<Admin />} />
+                <Route path="/admin-dashboard" element={<AdminDashboard />} />
                 <Route path="/andrew-luu" element={<AndrewLuu />} />
                 <Route path="/robert-sanchez" element={<RobertSanchez />} />
                 <Route path="/partnership" element={<Partnership />} />
