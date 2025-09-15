@@ -8,6 +8,7 @@
     "dev:server": "node server/index.js",
     "dev:full": "npm-run-all --parallel dev dev:server",
     "build": "tsc && vite build",
+    "postbuild": "cp -f dist/index.html dist/404.html || true",
     "preview": "vite preview",
     "type-check": "tsc --noEmit"
   },
