@@ -30,7 +30,7 @@ const ACTION_BUTTONS = [
   },
   {
     text: "Become A Donor",
-    href: "/become-donor",
+    href: "/donors/register",
     className: "bg-primary-500 hover:bg-primary-600",
   },
 ];

@@ -83,6 +83,12 @@ export default defineConfig({
     port: 5173,
     strictPort: true,
     compression: true,
+    proxy: {
+      "/api": {
+        target: "http://127.0.0.1:5175",
+        changeOrigin: true,
+      },
+    },
     headers: {
       "Cache-Control": "public, max-age=31536000",
     },

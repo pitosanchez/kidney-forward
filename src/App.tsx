@@ -18,6 +18,8 @@ const Programs = lazy(() => import("./pages/Programs"));
 const AndrewLuu = lazy(() => import("./pages/AndrewLuu"));
 const RobertSanchez = lazy(() => import("./pages/RobertSanchez"));
 const Partnership = lazy(() => import("./pages/Partnership"));
+const DonorRegister = lazy(() => import("./pages/DonorRegister"));
+const Admin = lazy(() => import("./pages/Admin"));
 
 // Story pages
 const SarahStory = lazy(() => import("./pages/stories/Sarah"));
@@ -46,6 +48,8 @@ function App() {
                 <Route path="/patients" element={<Patients />} />
                 <Route path="/get-involved" element={<GetInvolved />} />
                 <Route path="/programs" element={<Programs />} />
+                <Route path="/donors/register" element={<DonorRegister />} />
+                <Route path="/admin" element={<Admin />} />
                 <Route path="/andrew-luu" element={<AndrewLuu />} />
                 <Route path="/robert-sanchez" element={<RobertSanchez />} />
                 <Route path="/partnership" element={<Partnership />} />

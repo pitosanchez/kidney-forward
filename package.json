@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:server": "node server/index.js",
+    "dev:full": "npm-run-all --parallel dev dev:server",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "type-check": "tsc --noEmit"
@@ -12,6 +14,9 @@
   "dependencies": {
     "@anthropic-ai/sdk": "^0.57.0",
     "@tailwindcss/aspect-ratio": "^0.4.2",
+    "better-sqlite3": "^12.2.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
     "gsap": "^3.13.0",
     "lucide-react": "^0.400.0",
     "react": "^18.3.1",
@@ -29,6 +34,7 @@
     "eslint": "^8.45.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
+    "npm-run-all": "^4.1.5",
     "postcss": "^8.5.6",
     "prettier": "^3.6.2",
     "tailwindcss": "^3.4.17",
